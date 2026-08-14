@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altra AI | Krishnyansh Zenova Peaks</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <style>
+        :root {
+            --primary-bg: #05070a;
+            --card-bg: #11161d;
+            --accent-cyan: #0ff;
+            --accent-teal: #008080;
+            --text-primary: #e0f7fa;
+            --text-secondary: #80cbc4;
+            --glow-effect: 0 0 15px rgba(0, 255, 255, 0.5);
+            --border-color: #263238;
+            --whatsapp-green: #25d366;
+            --danger-color: #ff6b6b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { 
+            background-color: var(--primary-bg);
+            background-image: radial-gradient(circle at 50% -20%, var(--accent-teal) 0%, var(--primary-bg) 60%);
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            color: var(--text-primary);
+            overflow: hidden;
+        }
+
+        .app-container { 
+            width: 100%; 
+            max-width: 450px; 
+            height: 95vh; 
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px; 
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), var(--glow-effect);
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+            position: relative;
+        }
+
+        .app-header { 
+            padding: 14px; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(17, 22, 29, 0.8) 0%, rgba(5, 7, 10, 0.8) 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .app-header-left { text-align: left; }
+        .app-header h1 { font-size: 14px; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; }
+        .app-header p { font-size: 8px; color: var(--text-secondary); }
+        
+        .signout-btn {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+            padding: 4px 8px;
+            font-size: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
+        }
+        .signout-btn:hover { background: var(--danger-color); color: white; }
+
+        /* AUTH VIEWS (SIGN IN / SIGN UP) */
+        .auth-view {
+            flex: 1; padding: 20px; display: flex; flex-direction: column; justify-content: center; text-align: center; overflow-y: auto;
+        }
+        .auth-view h2 { color: var(--accent-cyan); font-size: 15px; margin-bottom: 4px; }
+        .auth-view p { font-size: 9px; color: var(--text-secondary); margin-bottom: 15px; }
+        
+        .input-group { margin-bottom: 10px; text-align: left; }
+        .input-group label { display: block; font-size: 9px; color: var(--text-secondary); margin-bottom: 3px; font-weight: 600; text-transform: uppercase; }
+        .input-group input, .input-group select { 
+            width: 100%; padding: 8px; background: rgba(0,0,0,0.3); 
+            border: 1px solid var(--border-color); border-radius: 8px; 
+            color: white; font-size: 10px; outline: none; 
+        }
+        .input-group select option { background: var(--card-bg); color: white; }
+
+        .auth-switch {
+            font-size: 9px; color: var(--text-secondary); margin-top: 12px; cursor: pointer;
+        }
+        .auth-switch span { color: var(--accent-cyan); font-weight: bold; text-decoration: underline; }
+
+        /* DASHBOARD VIEW */
+        #dashboard-view {
+            flex: 1; padding: 15px; display: none; flex-direction: column; gap: 10px; overflow-y: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+        }
+
+        .service-icon { font-size: 22px; margin-bottom: 5px; color: var(--accent-cyan); }
+        .service-card h3 { font-size: 11px; margin-bottom: 2px; color: var(--text-primary); }
+        .service-card p { font-size: 8px; color: var(--text-secondary); line-height: 1.2; }
+
+        .support-section {
+            background: rgba(0, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+        }
+        .support-section h4 { font-size: 11px; color: var(--accent-cyan); margin-bottom: 2px; }
+        .support-section p { font-size: 8px; color: var(--text-secondary); margin-bottom: 6px; }
+        
+        .whatsapp-btn {
+            background-color: var(--whatsapp-green);
+            color: white; border: none;
+            padding: 6px 14px; border-radius: 15px;
+            font-weight: bold; font-size: 10px;
+            cursor: pointer; display: inline-flex;
+            align-items: center; gap: 5px; text-decoration: none;
+        }
+
+        /* CHAT VIEW */
+        #chat-view {
+            flex: 1; display: none; flex-direction: column;
+            background-color: var(--primary-bg); height: 100%; overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 10px 15px; border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--card-bg);
+        }
+
+        .back-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; font-size: 11px; font-weight: bold; }
+
+        #chat-box { 
+            flex: 1; padding: 12px; overflow-y: auto; 
+            display: flex; flex-direction: column; gap: 10px; 
+        }
+
+        .message { max-width: 85%; padding: 10px 12px; border-radius: 12px; font-size: 11px; line-height: 1.3; }
+        .user-msg { background-color: var(--accent-teal); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .ai-msg { background-color: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary); align-self: flex-start; border-bottom-left-radius: 4px; }
+        .ai-msg strong { color: var(--accent-cyan); }
+
+        .input-area { 
+            padding: 10px; background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color); display: flex; gap: 6px; 
+        }
+        
+        textarea { 
+            flex: 1; padding: 8px; background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color); border-radius: 8px; 
+            outline: none; color: var(--text-primary); font-size: 11px; resize: none; height: 38px; 
+        }
+        
+        .send-btn { 
+            background-color: var(--accent-cyan); color: var(--primary-bg);
+            border: none; border-radius: 8px; padding: 0 14px; 
+            font-weight: 700; cursor: pointer; font-size: 10px; text-transform: uppercase;
+        }
+
+        .typing-indicator { font-style: italic; color: var(--text-secondary); font-size: 8px; display: none; margin-left: 12px; margin-bottom: 3px; }
+
+        /* MODAL */
+        #modal-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 7, 10, 0.96); backdrop-filter: blur(5px);
+            display: none; flex-direction: column; z-index: 200; padding: 18px; overflow-y: auto; border-radius: 24px;
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        .modal-header h2 { color: var(--accent-cyan); font-size: 14px; }
+        .close-modal { background: none; border: none; color: var(--text-secondary); font-size: 16px; cursor: pointer; }
+
+        .form-group { margin-bottom: 10px; text-align: left; }
+        .form-group label { display: block; font-size: 9px; color: var(--text-secondary); margin-bottom: 3px; font-weight: 600; text-transform: uppercase; }
+        .form-group input { width: 100%; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; color: white; font-size: 10px; outline: none; }
+        
+        .action-btn { background: var(--accent-cyan); color: var(--primary-bg); border: none; width: 100%; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 11px; cursor: pointer; margin-top: 10px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="app-header">
+        <div class="app-header-left">
+            <h1>Altra AI</h1>
+            <p id="location-display">Zenova Peak Tech Hub</p>
+        </div>
+        <button id="signout-button" class="signout-btn" onclick="signOut()">Sign Out</button>
+    </div>
+    
+    <!-- SIGN UP VIEW -->
+    <div id="signup-view" class="auth-view">
+        <h2>Create Altra Account</h2>
+        <p>Set up your profile to launch global automation.</p>
+        
+        <div class="input-group">
+            <label>Your Name / Business Name</label>
+            <input type="text" id="signup-name" placeholder="e.g., Ruby Garg">
+        </div>
+
+        <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" id="signup-email" placeholder="owner@krishnyanshzenovapeaks.com">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="signup-pass" placeholder="••••••••">
+        </div>
+
+        <div class="input-group">
+            <label>Operating Country</label>
+            <select id="signup-country">
+                <option value="Global">Auto-detect via IP</option>
+                <option value="Nigeria">Nigeria (₦)</option>
+                <option value="United States">United States ($)</option>
+                <option value="India">India (₹)</option>
+                <option value="United Kingdom">United Kingdom (£)</option>
+                <option value="United Arab Emirates">United Arab Emirates (AED)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Business Category</label>
+            <select id="signup-category" onchange="checkCustomCategory(this)">
+                <option value="Hospitality & Hotels">Hospitality & Hotels</option>
+                <option value="E-commerce & Retail">E-commerce & Retail</option>
+                <option value="Travel Agency & Guide">Travel Agency & Guide</option>
+                <option value="Corporate Trainer & Education">Corporate Trainer & Education</option>
+                <option value="Student & Academic Study">Student & Academic Study</option>
+                <option value="Homemaker & Household">Homemaker & Household</option>
+                <option value="Corporate Firm & Agency">Corporate Firm & Agency</option>
+                <option value="Custom">✨ Type Custom Category...</option>
+            </select>
+        </div>
+
+        <div class="input-group" id="custom-category-box" style="display: none;">
+            <label>Enter Custom Category</label>
+            <input type="text" id="custom-category-input" placeholder="e.g., Aviation, Freelancer, etc.">
+        </div>
+
+        <button class="action-btn" onclick="registerUser()">Sign Up & Launch →</button>
+        <div class="auth-switch" onclick="switchView('signin')">Already have an account? <span>Sign In</span></div>
+    </div>
+
+    <!-- SIGN IN VIEW -->
+    <div id="signin-view" class="auth-view" style="display: none;">
+        <h2>Sign In to Altra AI</h2>
+        <p>Access your global business automation dashboard.</p>
+        
+        <div class="input-group">
+            <label>Email Address</label>
+            <input type="email" id="signin-email" placeholder="owner@krishnyanshzenovapeaks.com">
+        </div>
+
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password" id="signin-pass" placeholder="••••••••">
+        </div>
+
+        <button class="action-btn" onclick="signInUser()">Sign In →</button>
+        <div class="auth-switch" onclick="switchView('signup')">Don't have an account? <span>Sign Up</span></div>
+    </div>
+
+    <!-- DASHBOARD VIEW -->
+    <div id="dashboard-view">
+        <div class="services-grid">
+            <div class="service-card" onclick="selectService('General Assistant', '🤖')">
+                <div class="service-icon">🤖</div>
+                <h3>General Assistant</h3>
+                <p>Global multi-lingual support.</p>
+            </div>
+
+            <div class="service-card" onclick="selectService('Bookings & Operations', '🏨')">
+                <div class="service-icon">🏨</div>
+                <h3>Bookings & Schedule</h3>
+                <p>Automated reservations & calendars.</p>
+            </div>
+
+            <div class="service-card" onclick="openModal('automation')">
+                <div class="service-icon">⚡</div>
+                <h3>AI Automation</h3>
+                <p>Connect WhatsApp, FB & IG channels.</p>
+            </div>
+
+            <div class="service-card" onclick="openModal('lens')">
+                <div class="service-icon">📷</div>
+                <h3>Altra Lens</h3>
+                <p>Snap receipt OCR to Bookkeeping ledger.</p>
+            </div>
+
+            <div class="service-card" onclick="selectService('Bookkeeping & P&L', '📊')">
+                <div class="service-icon">📊</div>
+                <h3>Bookkeeping</h3>
+                <p>Enterprise financial tracking.</p>
+            </div>
+        </div>
+
+        <div class="support-section">
+            <h4>Need Human Assistance?</h4>
+            <p>Connect directly with Zenova Peak Tech Hub.</p>
+            <a href="https://wa.me/2349067862223?text=Hello%20Zenova%20Peak%20Tech%20Hub,%20I%20need%20assistance%20with%20Altra%20AI." target="_blank" class="whatsapp-btn">
+                💬 Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <!-- CHAT VIEW -->
+    <div id="chat-view">
+        <div class="chat-header">
+            <button class="back-btn" onclick="showDashboard()">← Back</button>
+            <h3 id="current-service-title" style="color: var(--accent-cyan); font-size: 11px;">Service</h3>
+            <div style="width: 25px;"></div>
+        </div>
+        
+        <div id="chat-box"></div>
+        <div id="typing" class="typing-indicator">Altra AI is typing...</div>
+
+        <div class="input-area">
+            <textarea id="user-input" placeholder="Type your message..." onkeypress="handleKeyPress(event)"></textarea>
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- CONFIGURATION MODAL -->
+    <div id="modal-overlay">
+        <div class="modal-header">
+            <h2 id="modal-title">Module Settings</h2>
+            <button class="close-modal" onclick="closeModal()">✕</button>
+        </div>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<script>
+    const clientId = 'client_' + Math.random().toString(36).substring(7);
+    let currentService = 'General Assistant';
+    let userCountry = 'Global';
+    let userCurrency = '$';
+    let businessCategory = 'General Business';
+    let ownerName = 'User';
+
+    async function detectLocation() {
+        try {
+            const res = await fetch('https://ipapi.co/json/');
+            const data = await res.json();
+            userCountry = data.country_name || 'Global';
+            userCurrency = data.currency || '$';
+            document.getElementById('signup-country').value = userCountry;
+        } catch (e) {
+            console.log('Location detection fallback');
+        }
+    }
+    detectLocation();
+
+    function checkCustomCategory(select) {
+        const customBox = document.getElementById('custom-category-box');
+        if (select.value === 'Custom') {
+            customBox.style.display = 'block';
+        } else {
+            customBox.style.display = 'none';
+        }
+    }
+
+    function switchView(view) {
+        if (view === 'signin') {
+            document.getElementById('signup-view').style.display = 'none';
+            document.getElementById('signin-view').style.display = 'flex';
+        } else {
+            document.getElementById('signin-view').style.display = 'none';
+            document.getElementById('signup-view').style.display = 'flex';
+        }
+    }
+
+    function registerUser() {
+        ownerName = document.getElementById('signup-name').value || 'User';
+        const email = document.getElementById('signup-email').value;
+        const pass = document.getElementById('signup-pass').value;
+
+        if (!email || !pass) {
+            alert('Please enter your email and password.');
+            return;
+        }
+
+        userCountry = document.getElementById('signup-country').value;
+        const catSelect = document.getElementById('signup-category').value;
+        if (catSelect === 'Custom') {
+            businessCategory = document.getElementById('custom-category-input').value || 'Custom Professional';
+        } else {
+            businessCategory = catSelect;
+        }
+
+        // Save session locally
+        localStorage.setItem('altra_user', ownerName);
+        localStorage.setItem('altra_category', businessCategory);
+        localStorage.setItem('altra_country', userCountry);
+
+        launchDashboard();
+    }
+
+    function signInUser() {
+        const email = document.getElementById('signin-email').value;
+        const pass = document.getElementById('signin-pass').value;
+
+        if (!email || !pass) {
+            alert('Please enter your email and password.');
+            return;
+        }
+
+        ownerName = email.split('@')[0];
+        ownerName = ownerName.charAt(0).toUpperCase() + ownerName.slice(1);
+        businessCategory = 'Enterprise Operations';
+
+        localStorage.setItem('altra_user', ownerName);
+        localStorage.setItem('altra_category', businessCategory);
+        localStorage.setItem('altra_country', userCountry);
+
+        launchDashboard();
+    }
+
+    function launchDashboard() {
+        document.getElementById('signup-view').style.display = 'none';
+        document.getElementById('signin-view').style.display = 'none';
+        document.getElementById('dashboard-view').style.display = 'flex';
+        document.getElementById('signout-button').style.display = 'block';
+        document.getElementById('location-display').innerText = `${userCountry} | ${businessCategory}`;
+    }
+
+    function signOut() {
+        localStorage.removeItem('altra_user');
+        localStorage.removeItem('altra_category');
+        localStorage.removeItem('altra_country');
+
+        document.getElementById('dashboard-view').style.display = 'none';
+        document.getElementById('chat-view').style.display = 'none';
+        document.getElementById('signout-button').style.display = 'none';
+        document.getElementById('signup-view').style.display = 'flex';
+    }
+
+    function selectService(serviceName, icon) {
+        currentService = serviceName;
+        document.getElementById('current-service-title').innerText = serviceName;
+        document.getElementById('dashboard-view').style.display = 'none';
+        document.getElementById('chat-view').style.display = 'flex';
+        
+        const chatBox = document.getElementById('chat-box');
+        chatBox.innerHTML = `<div class="message ai-msg">Hello <strong>${ownerName}</strong>! I am your <strong>${serviceName}</strong> module configured for <strong>${businessCategory}</strong> in <strong>${userCountry}</strong>. Powered by Altra AI (Zenova Peak Tech Hub). How can I assist you today?</div>`;
+    }
+
+    function showDashboard() {
+        document.getElementById('chat-view').style.display = 'none';
+        document.getElementById('dashboard-view').style.display = 'flex';
+    }
+
+    function openModal(type) {
+        const modal = document.getElementById('modal-overlay');
+        const title = document.getElementById('modal-title');
+        const body = document.getElementById('modal-body');
+        modal.style.display = 'flex';
+
+        if (type === 'automation') {
+            title.innerText = '⚡ AI Automation Hub';
+            body.innerHTML = `
+                <div class="form-group"><label>Business Website URL</label><input type="text" id="cfg-url" value="https://www.krishnyanshzenovapeaks.com"></div>
+                <div class="form-group"><label>Channel Integration Status</label><p style="font-size:9px; color:var(--text-secondary);">Connect WhatsApp Business API, Facebook Pages, and Instagram accounts for ${businessCategory}.</p></div>
+                <button class="action-btn" onclick="saveConfig('AI Automation')">Save & Deploy Channels</button>
+            `;
+        } else if (type === 'lens') {
+            title.innerText = '📷 Altra Lens OCR';
+            body.innerHTML = `
+                <div class="form-group"><label>Receipt / Invoice Data</label><input type="text" id="cfg-receipt" placeholder="Enter Vendor, Item & Amount"></div>
+                <div class="form-group"><label>Ledger Target</label><p style="font-size:9px; color:var(--text-secondary);">Parsed data automatically logs into your Bookkeeping P&L for ${businessCategory} (${userCurrency}).</p></div>
+                <button class="action-btn" onclick="saveConfig('Altra Lens')">Process & Post to Ledger</button>
+            `;
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('modal-overlay').style.display = 'none';
+    }
+
+    function saveConfig(moduleName) {
+        closeModal();
+        selectService(moduleName, '⚡');
+        const chatBox = document.getElementById('chat-box');
+        chatBox.innerHTML += `<div class="message ai-msg">✨ <strong>${moduleName} Configured Successfully!</strong><br>Optimized for ${businessCategory} in ${userCountry}. Altra AI is active.</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function sendMessage() {
+        const inputField = document.getElementById('user-input');
+        const chatBox = document.getElementById('chat-box');
+        const typingIndicator = document.getElementById('typing');
+        const prompt = inputField.value.trim();
+
+        if (!prompt) return;
+
+        chatBox.innerHTML += `<div class="message user-msg">${prompt}</div>`;
+        inputField.value = '';
+        inputField.style.height = '38px';
+        chatBox.scrollTop = chatBox.scrollHeight;
+        
+        typingIndicator.style.display = 'block';
+
+        try {
+            const response = await fetch('http://localhost:5001/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt, clientId, service: currentService, country: userCountry, currency: userCurrency, category: businessCategory })
+            });
+
+            const data = await response.json();
+            typingIndicator.style.display = 'none';
+
+            if (data.success) {
+                chatBox.innerHTML += `<div class="message ai-msg">${data.reply}</div>`;
+            } else {
+                chatBox.innerHTML += `<div class="message ai-msg" style="color: #ff6b6b;">Error: ${data.error}</div>`;
+            }
+        } catch (error) {
+            typingIndicator.style.display = 'none';
+            chatBox.innerHTML += `<div class="message ai-msg" style="color: #ff6b6b;">Connection error. Ensure your server is running.</div>`;
+        }
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+</script>
+
+</body>
+</html>
