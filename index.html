@@ -178,7 +178,11 @@
                         </div>
                         <button onclick="generateCreatorContent()" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition">Generate Content Kit</button>
                     </div>
-
+<!-- Update this line in the Corporate Trainer tab section -->
+<div class="flex space-x-2">
+    <input type="text" id="input-trainer" placeholder="Ask training question (e.g., What is our refund policy?)..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('trainer')">
+    <button onclick="sendModuleChat('trainer')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Ask Trainer</button>
+</div>
                     <div class="md:col-span-2 bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between h-[320px]">
                         <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Generated Content Output</h4>
                         <div id="creator-output" class="flex-1 overflow-y-auto bg-slate-900/80 p-3 rounded-lg border border-slate-800 text-xs text-slate-200 my-2 space-y-2">
