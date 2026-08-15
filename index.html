@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altra AI | Global Business Operating System</title>
+    <title>Altra AI | Global Business Operating System & Media Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -17,17 +17,17 @@
     <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl overflow-hidden bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                    <img src="/icon.png" alt="Altra AI Logo" class="w-full h-full object-cover">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shadow-lg">
+                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg tracking-wide text-white">ALTRA AI</h1>
-                    <p class="text-xs text-slate-400">Zenova Peak Tech Hub Global OS</p>
+                    <h1 class="font-bold text-lg tracking-wide text-white">ALTRA AI SUITE</h1>
+                    <p class="text-xs text-slate-400">Zenova Peak Tech Hub Global Platform</p>
                 </div>
             </div>
             <div id="user-profile-pill" class="hidden items-center space-x-3 bg-slate-800/60 border border-slate-700/50 px-3 py-1.5 rounded-full">
                 <span id="display-location-badge" class="text-xs px-2 py-0.5 bg-emerald-500/20 text-emerald-400 rounded-md font-medium">🇳🇬 Nigeria (₦)</span>
-                <span id="display-business-name" class="text-xs font-semibold text-slate-200">Business Hub</span>
+                <span id="display-business-name" class="text-xs font-semibold text-slate-200">Zenova Peak</span>
                 <button onclick="handleLogout()" class="text-xs text-rose-400 hover:text-rose-300 ml-2 font-medium">Logout</button>
             </div>
         </div>
@@ -36,227 +36,242 @@
     <!-- Main Content Container -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center">
 
-        <!-- VIEW 1: SIGN-UP & SETUP ENGINE (Auto Location Detection) -->
+        <!-- VIEW 1: SIGN-UP & SETUP -->
         <div id="signup-view" class="max-w-md mx-auto w-full bg-slate-900/80 border border-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl backdrop-blur-md">
             <div class="text-center mb-6">
-                <h2 class="text-2xl font-bold text-white">Create Altra Account</h2>
-                <p class="text-sm text-slate-400 mt-1">Set up your profile to launch global automation.</p>
+                <h2 class="text-2xl font-bold text-white">Activate Altra AI Suite</h2>
+                <p class="text-sm text-slate-400 mt-1">Deploy multi-bot corporate, student, voice, and media engines.</p>
             </div>
 
             <form id="signup-form" onsubmit="handleSignUp(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Your Name / Business Name</label>
-                    <input type="text" id="biz-name" required placeholder="e.g. Zenova Peak Tech Hub" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Company / Organization Name</label>
+                    <input type="text" id="biz-name" required value="Zenova Peak Tech Hub" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Email Address</label>
-                    <input type="email" id="biz-email" required placeholder="owner@company.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Password</label>
-                    <input type="password" id="biz-password" required placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Owner Email</label>
+                    <input type="email" id="biz-email" required value="nonugupta2@gmail.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Operating Country</label>
-                        <select id="biz-country" onchange="updateCountryProfile()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
-                            <option value="NG" data-curr="₦" data-lang="Pidgin / English">Nigeria (₦)</option>
-                            <option value="US" data-curr="$" data-lang="English">United States ($)</option>
-                            <option value="IN" data-curr="₹" data-lang="Hindi / Hinglish">India (₹)</option>
-                            <option value="AE" data-curr="AED" data-lang="Arabic / English">UAE (AED)</option>
-                            <option value="GB" data-curr="£" data-lang="English">United Kingdom (£)</option>
+                        <select id="biz-country" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                            <option value="NG" data-curr="₦">Nigeria (₦)</option>
+                            <option value="US" data-curr="$">United States ($)</option>
+                            <option value="IN" data-curr="₹">India (₹)</option>
+                            <option value="AE" data-curr="AED">UAE (AED)</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Business Category</label>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Primary Industry</label>
                         <select id="biz-category" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
-                            <option value="General Retail">General Retail & E-commerce</option>
-                            <option value="Hospitality">Hospitality & Restaurant</option>
-                            <option value="Travel">Travel Agency & Guide</option>
-                            <option value="Professional Services">Professional Services</option>
-                            <option value="Healthcare">Healthcare & Wellness</option>
+                            <option value="Tech & Automation">Tech & Automation</option>
+                            <option value="Corporate Training">Corporate Training & EdTech</option>
+                            <option value="E-Commerce">Global E-Commerce</option>
                         </select>
                     </div>
                 </div>
 
                 <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 px-4 rounded-xl transition duration-200 mt-2 flex items-center justify-center space-x-2">
-                    <span>SIGN UP & LAUNCH</span>
+                    <span>LAUNCH ECOSYSTEM</span>
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             </form>
         </div>
 
-        <!-- VIEW 2: FULL OPERATING SYSTEM DASHBOARD (Modules & Exploration) -->
+        <!-- VIEW 2: MULTI-MODULE DASHBOARD -->
         <div id="dashboard-view" class="hidden flex-col space-y-6">
             
-            <!-- Global Banner & Quick Status -->
-            <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-emerald-950/40 border border-slate-800 p-5 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span class="text-xs uppercase font-bold tracking-wider text-emerald-400">System Online • Business Operating System</span>
-                    </div>
-                    <h2 id="dash-welcome-title" class="text-xl md:text-2xl font-bold text-white mt-1">Welcome back, Zenova Peak Tech Hub</h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Active Currency: <span id="lbl-currency" class="text-white font-semibold">₦ (NGN)</span> | Timezone: Local Active</p>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="switchTab('chat')" id="tab-btn-chat" class="px-4 py-2 bg-emerald-500 text-slate-950 rounded-xl font-semibold text-xs flex items-center space-x-2 transition">
-                        <i data-lucide="bot" class="w-4 h-4"></i>
-                        <span>Altra AI Assistant</span>
+            <!-- Module Navigation Bar -->
+            <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-2xl flex flex-wrap gap-2 items-center justify-between">
+                <div class="flex flex-wrap gap-1.5">
+                    <button onclick="switchTab('altra')" id="tab-btn-altra" class="px-3 py-2 bg-emerald-500 text-slate-950 rounded-xl font-bold text-xs flex items-center space-x-1.5 transition">
+                        <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                        <span>AltraAI & Bookkeeping</span>
                     </button>
-                    <button onclick="switchTab('lens')" id="tab-btn-lens" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-semibold text-xs flex items-center space-x-2 transition">
-                        <i data-lucide="scan" class="w-4 h-4"></i>
-                        <span>Altra Lens (Bookkeeping OCR)</span>
+                    <button onclick="switchTab('trainer')" id="tab-btn-trainer" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
+                        <i data-lucide="users" class="w-3.5 h-3.5"></i>
+                        <span>Corporate Trainer</span>
                     </button>
-                    <button onclick="switchTab('insights')" id="tab-btn-insights" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-semibold text-xs flex items-center space-x-2 transition">
-                        <i data-lucide="pie-chart" class="w-4 h-4"></i>
-                        <span>Insights & Handover</span>
+                    <button onclick="switchTab('student')" id="tab-btn-student" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
+                        <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                        <span>Student Tutor</span>
+                    </button>
+                    <button onclick="switchTab('omnichannel')" id="tab-btn-omnichannel" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
+                        <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+                        <span>Omnichannel Hub</span>
+                    </button>
+                    <button onclick="switchTab('voice')" id="tab-btn-voice" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
+                        <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                        <span>Voice Agents</span>
+                    </button>
+                    <button onclick="switchTab('reality')" id="tab-btn-reality" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
+                        <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+                        <span>Global Realities</span>
+                    </button>
+                    <button onclick="switchTab('media')" id="tab-btn-media" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
+                        <i data-lucide="video" class="w-3.5 h-3.5"></i>
+                        <span>Ad & Media Studio</span>
                     </button>
                 </div>
             </div>
 
-            <!-- TAB CONTAINER 1: ALTRA AI ASSISTANT & CHAT ENGINE -->
-            <div id="module-chat" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Chat Window -->
-                <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl flex flex-col h-[520px]">
-                    <div class="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-950/40 rounded-t-2xl">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-                                <i data-lucide="bot" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-sm text-white">Altra AI Core Bot</h3>
-                                <p class="text-[10px] text-slate-400">Multi-Channel Active (Web, WhatsApp, IG, FB)</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs px-2 py-1 bg-slate-800 rounded-lg text-slate-300">Language: <span id="active-lang-text" class="text-emerald-400">Pidgin / English</span></span>
-                        </div>
+            <!-- MODULE 1: ALTRA AI & BOOKKEEPING LENS -->
+            <div id="module-altra" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl flex flex-col h-[480px]">
+                    <div class="p-3.5 border-b border-slate-800 flex justify-between items-center bg-slate-950/40 rounded-t-2xl">
+                        <span class="font-bold text-xs text-white flex items-center space-x-2"><i data-lucide="cpu" class="w-4 h-4 text-emerald-400"></i><span>AltraAI Global Knowledge & Bookkeeping Engine</span></span>
                     </div>
-
-                    <!-- Chat Messages Flow -->
-                    <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-sm">
-                        <div class="flex items-start space-x-2">
-                            <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold">AI</div>
-                            <div class="bg-slate-800/80 p-3 rounded-2xl max-w-[80%] text-slate-200 text-xs leading-relaxed">
-                                Welcome back! Altra AI is active. I am monitoring your leads, syncing your calendar, and ready to assist your clients in their local language. Type a message or test actions like <span class="text-emerald-400 font-semibold">"Book appointment for tomorrow"</span>.
-                            </div>
-                        </div>
+                    <div id="chat-messages-altra" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+                        <div class="bg-slate-800/80 p-3 rounded-xl text-slate-200">AltraAI is live. Ask any global query, automate workflows, or snap receipts to update your bookkeeping records instantly.</div>
                     </div>
-
-                    <!-- Chat Input Box -->
-                    <div class="p-3 border-t border-slate-800 bg-slate-950/40 rounded-b-2xl flex items-center space-x-2">
-                        <input type="text" id="chat-input" placeholder="Ask Altra AI or test customer prompt..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key === 'Enter') sendChatMessage()">
-                        <button onclick="sendChatMessage()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 px-4 py-2.5 rounded-xl font-bold text-xs transition flex items-center justify-center">
-                            <i data-lucide="send" class="w-4 h-4"></i>
-                        </button>
+                    <div class="p-3 border-t border-slate-800 flex space-x-2">
+                        <input type="text" id="input-altra" placeholder="Ask global queries or log transaction..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('altra')">
+                        <button onclick="sendModuleChat('altra')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Send</button>
                     </div>
                 </div>
-
-                <!-- Operating Modules & Toggles Sidebar -->
-                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between space-y-4">
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
                     <div>
-                        <h3 class="font-bold text-sm text-white mb-3 flex items-center space-x-2">
-                            <i data-lucide="sliders" class="w-4 h-4 text-emerald-400"></i>
-                            <span>Active System Toggles</span>
-                        </h3>
-                        <div class="space-y-3 text-xs">
-                            <div class="flex justify-between items-center bg-slate-950/40 p-2.5 rounded-xl border border-slate-800">
-                                <span>Auto Calendar / Sheet Action</span>
-                                <input type="checkbox" checked class="accent-emerald-500 w-4 h-4">
-                            </div>
-                            <div class="flex justify-between items-center bg-slate-950/40 p-2.5 rounded-xl border border-slate-800">
-                                <span>WhatsApp Voice Missed Call AI</span>
-                                <input type="checkbox" checked class="accent-emerald-500 w-4 h-4">
-                            </div>
-                            <div class="flex justify-between items-center bg-slate-950/40 p-2.5 rounded-xl border border-slate-800">
-                                <span>Comment to DM (FB/Insta)</span>
-                                <input type="checkbox" checked class="accent-emerald-500 w-4 h-4">
-                            </div>
-                            <div class="flex justify-between items-center bg-slate-950/40 p-2.5 rounded-xl border border-slate-800">
-                                <span>Human Handover Alert</span>
-                                <input type="checkbox" checked class="accent-emerald-500 w-4 h-4">
-                            </div>
+                        <h3 class="font-bold text-sm text-white mb-2 flex items-center space-x-2"><i data-lucide="scan" class="w-4 h-4 text-emerald-400"></i><span>Altra Lens (Receipt OCR)</span></h3>
+                        <p class="text-xs text-slate-400 mb-4">Snap bills or receipts to auto-extract vendor and amount into P&L ledger.</p>
+                        <div class="border-2 border-dashed border-slate-700 rounded-xl p-6 text-center bg-slate-950/40 cursor-pointer hover:border-emerald-500" onclick="simulateLensScan()">
+                            <i data-lucide="upload" class="w-8 h-8 text-emerald-400 mx-auto mb-2"></i>
+                            <span class="text-xs font-semibold text-white">Click to Upload Receipt</span>
                         </div>
                     </div>
-
-                    <div class="bg-emerald-500/10 border border-emerald-500/20 p-3 rounded-xl">
-                        <div class="text-[11px] font-bold text-emerald-400 uppercase">Live Insight Snippet</div>
-                        <p class="text-xs text-slate-300 mt-1" id="dynamic-insight-line">"You had 0 missed bookings today. Location engine synchronized successfully."</p>
+                    <div id="lens-log" class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs text-slate-300">
+                        <span class="text-emerald-400 font-bold">Latest Ledger Entry:</span> No recent scan yet.
                     </div>
                 </div>
             </div>
 
-            <!-- TAB CONTAINER 2: ALTRA LENS (SNAPSHOT TO BOOKKEEPING P&L) -->
-            <div id="module-lens" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+            <!-- MODULE 2: CORPORATE TRAINER BOT -->
+            <div id="module-trainer" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <div class="flex justify-between items-center mb-4">
                     <div>
-                        <h3 class="font-bold text-base text-white flex items-center space-x-2">
-                            <i data-lucide="scan" class="w-5 h-5 text-emerald-400"></i>
-                            <span>Altra Lens - Snap Receipt to Bookkeeping</span>
-                        </h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Upload or snap receipts, invoices, and bills to auto-extract amount & vendor into your P&L.</p>
+                        <h3 class="font-bold text-base text-white flex items-center space-x-2"><i data-lucide="users" class="w-5 h-5 text-emerald-400"></i><span>Corporate Trainer Bot</span></h3>
+                        <p class="text-xs text-slate-400">Trains internal staff on company SOPs, customer handling protocols, and compliance rules.</p>
                     </div>
-                    <span class="text-xs px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-lg font-medium">Global Multi-Currency Active</span>
+                    <span class="text-xs px-2.5 py-1 bg-emerald-500/20 text-emerald-400 rounded-lg font-semibold">Active SOP Loaded</span>
                 </div>
+                <div class="bg-slate-950/80 border border-slate-800 rounded-xl h-[350px] p-4 overflow-y-auto space-y-3 text-xs mb-3" id="chat-messages-trainer">
+                    <div class="bg-slate-900 p-3 rounded-xl text-slate-200">Hello team! I am your Corporate Trainer Bot. Ask me about our company policies, software stacks, or customer escalation paths.</div>
+                </div>
+                <div class="flex space-x-2">
+                    <input type="text" id="input-trainer" placeholder="Ask training question (e.g., What is our refund policy?)..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('trainer')">
+                    <button onclick="sendModuleChat('trainer')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Ask Trainer</button>
+                </div>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                    <div class="border-2 border-dashed border-slate-700 hover:border-emerald-500 rounded-2xl p-8 text-center cursor-pointer bg-slate-950/40 transition">
-                        <i data-lucide="upload-cloud" class="w-10 h-10 text-emerald-400 mx-auto mb-2"></i>
-                        <h4 class="font-bold text-sm text-white">Click or Drag Receipt Image Here</h4>
-                        <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, PDF invoices from any vendor worldwide</p>
-                        <button onclick="simulateOCRScan()" class="mt-4 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs font-bold rounded-xl transition">
-                            Simulate Snap & Extract OCR
-                        </button>
+            <!-- MODULE 3: STUDENT TUTOR BOT -->
+            <div id="module-student" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h3 class="font-bold text-base text-white flex items-center space-x-2"><i data-lucide="book-open" class="w-5 h-5 text-emerald-400"></i><span>Student Tutor Bot</span></h3>
+                        <p class="text-xs text-slate-400">Interactive academic and skill-building tutor for programming, math, science, and languages.</p>
                     </div>
+                    <span class="text-xs px-2.5 py-1 bg-indigo-500/20 text-indigo-400 rounded-lg font-semibold">Adaptive Learning Mode</span>
+                </div>
+                <div class="bg-slate-950/80 border border-slate-800 rounded-xl h-[350px] p-4 overflow-y-auto space-y-3 text-xs mb-3" id="chat-messages-student">
+                    <div class="bg-slate-900 p-3 rounded-xl text-slate-200">Welcome student! What topic or programming language would you like to master today?</div>
+                </div>
+                <div class="flex space-x-2">
+                    <input type="text" id="input-student" placeholder="Ask tutor anything (e.g., Explain JavaScript async/await)..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('student')">
+                    <button onclick="sendModuleChat('student')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Ask Tutor</button>
+                </div>
+            </div>
 
-                    <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-3">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Extracted P&L Transaction Log</h4>
-                        <div id="ocr-result-box" class="space-y-2 text-xs">
-                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 flex justify-between items-center">
-                                <div>
-                                    <p class="font-semibold text-white">Vendor: Office Depot / Supplies</p>
-                                    <p class="text-[10px] text-slate-400">Date: Today • Category: Operating Expense</p>
-                                </div>
-                                <span id="ocr-sample-amount" class="text-emerald-400 font-bold">+ ₦24,500.00</span>
-                            </div>
-                            <p class="text-[11px] text-slate-400 italic">Synced directly to automated bookkeeping records.</p>
-                        </div>
+            <!-- MODULE 4: OMNICHANNEL HUB (FB, Insta, WhatsApp, Web) -->
+            <div id="module-omnichannel" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+                <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="share-2" class="w-5 h-5 text-emerald-400"><span>Omnichannel Client Deployment Hub</span></h3>
+                <p class="text-xs text-slate-400 mb-6">Connect and deploy your custom AI bot directly across multiple customer touchpoints with single clicks.</p>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+                        <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl mx-auto flex items-center justify-center font-bold">WA</div>
+                        <h4 class="font-bold text-sm text-white">WhatsApp Business</h4>
+                        <button onclick="alert('WhatsApp webhook synced successfully!')" class="w-full py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-lg">Connected</button>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+                        <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl mx-auto flex items-center justify-center font-bold">FB</div>
+                        <h4 class="font-bold text-sm text-white">Facebook Messenger</h4>
+                        <button onclick="alert('Facebook Messenger auto-reply active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+                        <div class="w-10 h-10 bg-pink-500/20 text-pink-400 rounded-xl mx-auto flex items-center justify-center font-bold">IG</div>
+                        <h4 class="font-bold text-sm text-white">Instagram DM Engine</h4>
+                        <button onclick="alert('Instagram comment-to-DM active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+                        <div class="w-10 h-10 bg-amber-500/20 text-amber-400 rounded-xl mx-auto flex items-center justify-center font-bold">WEB</div>
+                        <h4 class="font-bold text-sm text-white">Website Embed Widget</h4>
+                        <button onclick="alert('Embed script copied to clipboard!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Get Script</button>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB CONTAINER 3: INSIGHTS & HANDOVER -->
-            <div id="module-insights" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h3 class="font-bold text-base text-white flex items-center space-x-2">
-                            <i data-lucide="pie-chart" class="w-5 h-5 text-emerald-400"></i>
-                            <span>Altra Insights Dashboard & WhatsApp Handover</span>
-                        </h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Real-time business telemetry and human takeover alerts.</p>
+            <!-- MODULE 5: VOICE AGENTS -->
+            <div id="module-voice" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+                <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="phone-call" class="w-5 h-5 text-emerald-400"></i><span>AI Human-Like Voice Calling Agent</span></h3>
+                <p class="text-xs text-slate-400 mb-6">Handles inbound client calls when your team is busy, takes bookings by voice, and forwards call transcripts to WhatsApp.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                        <span class="text-xs text-emerald-400 font-bold uppercase">Active Voice Line</span>
+                        <h4 class="text-lg font-bold text-white">+234 906 786 2223</h4>
+                        <p class="text-xs text-slate-400">AI Voice Assistant: Enabled (Professional English & Pidgin accent support)</p>
+                        <button onclick="alert('Test call simulator triggered. Ringing your device...')" class="py-2 px-4 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl">Test Voice Agent Call</button>
                     </div>
-                    <span class="text-xs px-3 py-1 bg-amber-500/20 text-amber-400 rounded-lg font-medium">1 Handover Pending</span>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
+                        <span class="text-xs text-slate-400 font-bold uppercase">Latest Call Transcript</span>
+                        <p class="text-xs text-slate-300 italic">"Caller requested a software quotation for 5 automation bots. Summary forwarded to owner WhatsApp."</p>
+                    </div>
                 </div>
+            </div>
 
+            <!-- MODULE 6: GLOBAL REALITIES -->
+            <div id="module-reality" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+                <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="activity" class="w-5 h-5 text-emerald-400"></i><span>Global Realities & Market Intelligence</span></h3>
+                <p class="text-xs text-slate-400 mb-6">Real-time international market facts, economic indicators, and business automation statistics.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-slate-950/60 border border-slate-800 p-4 rounded-xl">
-                        <div class="text-xs text-slate-400 font-medium">Top Customer Question</div>
-                        <div class="text-lg font-bold text-white mt-1">Pricing & Delivery Time</div>
-                        <p class="text-[11px] text-emerald-400 mt-1">Automated FAQ saved 14 hours this week</p>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-slate-400">Global AI Adoption Rate</span>
+                        <div class="text-xl font-bold text-emerald-400 mt-1">78.4% of Enterprises</div>
+                        <p class="text-[11px] text-slate-400 mt-1">Automating customer support and bookkeeping.</p>
                     </div>
-                    <div class="bg-slate-950/60 border border-slate-800 p-4 rounded-xl">
-                        <div class="text-xs text-slate-400 font-medium">Lead Capture Rate</div>
-                        <div class="text-lg font-bold text-white mt-1">94.2% Success</div>
-                        <p class="text-[11px] text-emerald-400 mt-1">Pushed to Google Sheets instantly</p>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-slate-400">Cross-Border Payment Speed</span>
+                        <div class="text-xl font-bold text-white mt-1">&lt; 3.2 Seconds</div>
+                        <p class="text-[11px] text-emerald-400 mt-1">Multi-currency automated reconciliation.</p>
                     </div>
-                    <div class="bg-slate-950/60 border border-slate-800 p-4 rounded-xl">
-                        <div class="text-xs text-slate-400 font-medium">Human Handover Alert</div>
-                        <div class="text-lg font-bold text-amber-400 mt-1">Client #402 Angry</div>
-                        <button onclick="alert('Owner WhatsApp notification triggered successfully!')" class="mt-2 w-full py-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-lg transition">Takeover in 1-Click</button>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs text-slate-400">Client Retention Boost</span>
+                        <div class="text-xl font-bold text-emerald-400 mt-1">+34.8% Increase</div>
+                        <p class="text-[11px] text-slate-400 mt-1">Driven by 24/7 instant omnichannel response.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 7: AD & MEDIA STUDIO -->
+            <div id="module-media" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+                <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="video" class="w-5 h-5 text-emerald-400"></i><span>AI Ad & Media Generator Studio</span></h3>
+                <p class="text-xs text-slate-400 mb-6">Generate high-converting corporate advertisement pictures and promotional video scripts instantly for social media.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Ad Prompt / Product Description</label>
+                            <input type="text" id="ad-prompt" placeholder="e.g., Professional AI Automation for African Businesses" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="generateAdMedia('image')" class="flex-1 py-2 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl">Generate Ad Image</button>
+                            <button onclick="generateAdMedia('video')" class="flex-1 py-2 bg-indigo-600 text-white font-bold text-xs rounded-xl">Generate Video Script</button>
+                        </div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-center items-center text-center">
+                        <div id="media-output-box" class="text-xs text-slate-400">
+                            <i data-lucide="image" class="w-10 h-10 text-slate-600 mx-auto mb-2"></i>
+                            Generated ad visuals and video scripts will appear here.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -267,43 +282,19 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-800 py-3 text-center text-xs text-slate-500 bg-slate-950">
-        Krishnyansh Zenova Peak Tech Hub • Altra AI Global Automation OS
+        Krishnyansh Zenova Peak Tech Hub • Altra AI Global Suite OS
     </footer>
 
-    <!-- JavaScript Execution Engine -->
+    <!-- JavaScript Engine -->
     <script>
         lucide.createIcons();
 
-        let userProfile = {
-            name: "Zenova Peak Tech Hub",
-            email: "nonugupta2@gmail.com",
-            country: "NG",
-            currency: "₦",
-            language: "Pidgin / English",
-            category: "General Retail"
-        };
-
-        function updateCountryProfile() {
-            const select = document.getElementById('biz-country');
-            const opt = select.options[select.selectedIndex];
-            userProfile.country = opt.value;
-            userProfile.currency = opt.getAttribute('data-curr');
-            userProfile.language = opt.getAttribute('data-lang');
-        }
+        let userProfile = { name: "Zenova Peak", country: "NG", currency: "₦" };
 
         function handleSignUp(e) {
             e.preventDefault();
             userProfile.name = document.getElementById('biz-name').value;
-            userProfile.email = document.getElementById('biz-email').value;
-
-            // Update UI elements
             document.getElementById('display-business-name').innerText = userProfile.name;
-            document.getElementById('display-location-badge').innerText = `${userProfile.country} (${userProfile.currency})`;
-            document.getElementById('dash-welcome-title').innerText = `Welcome back, ${userProfile.name}`;
-            document.getElementById('lbl-currency').innerText = `${userProfile.currency} (${userProfile.country === 'NG' ? 'NGN' : userProfile.country === 'IN' ? 'INR' : 'USD'})`;
-            document.getElementById('active-lang-text').innerText = userProfile.language;
-
-            // Switch views
             document.getElementById('signup-view').classList.add('hidden');
             document.getElementById('dashboard-view').classList.remove('hidden');
             document.getElementById('user-profile-pill').classList.remove('hidden');
@@ -318,7 +309,7 @@
         }
 
         function switchTab(tabName) {
-            ['chat', 'lens', 'insights'].forEach(t => {
+            ['altra', 'trainer', 'student', 'omnichannel', 'voice', 'reality', 'media'].forEach(t => {
                 document.getElementById(`module-${t}`).classList.add('hidden');
                 document.getElementById(`tab-btn-${t}`).classList.remove('bg-emerald-500', 'text-slate-950');
                 document.getElementById(`tab-btn-${t}`).classList.add('bg-slate-800', 'text-white');
@@ -328,50 +319,40 @@
             document.getElementById(`tab-btn-${tabName}`).classList.add('bg-emerald-500', 'text-slate-950');
         }
 
-        function sendChatMessage() {
-            const input = document.getElementById('chat-input');
+        function sendModuleChat(moduleType) {
+            const input = document.getElementById(`input-${moduleType}`);
             const text = input.value.trim();
             if(!text) return;
 
-            const chatMessages = document.getElementById('chat-messages');
-
-            // User Message
-            chatMessages.innerHTML += `
-                <div class="flex items-end justify-end space-x-2">
-                    <div class="bg-emerald-600 text-slate-950 p-3 rounded-2xl max-w-[80%] text-xs font-medium leading-relaxed">
-                        ${text}
-                    </div>
-                </div>
-            `;
+            const box = document.getElementById(`chat-messages-${moduleType}`);
+            box.innerHTML += `<div class="bg-emerald-600 text-slate-950 p-2.5 rounded-xl ml-auto max-w-[80%] font-medium">${text}</div>`;
             input.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            box.scrollTop = box.scrollHeight;
 
-            // Simulated AI Response with Localized Engine Context
             setTimeout(() => {
-                let aiReply = `Altra AI Engine processed your request under currency ${userProfile.currency}. Action synchronized successfully with Google Sheets and Calendar!`;
-                if(text.toLowerCase().includes('book') || text.toLowerCase().includes('order')) {
-                    aiReply = `✅ Action executed: Booking confirmed and logged to Google Calendar & Sheet in ${userProfile.currency}. Customer notified via WhatsApp!`;
-                } else if(userProfile.country === 'NG' && (text.toLowerCase().includes('how far') || text.toLowerCase().includes('abeg'))) {
-                    aiReply = `E go better! Altra AI dey here to run your booking and customer chat smoothly with ${userProfile.currency}. Wetin you want make I help you automate today?`;
-                }
-
-                chatMessages.innerHTML += `
-                    <div class="flex items-start space-x-2">
-                        <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-bold">AI</div>
-                        <div class="bg-slate-800/80 p-3 rounded-2xl max-w-[80%] text-slate-200 text-xs leading-relaxed">
-                            ${aiReply}
-                        </div>
-                    </div>
-                `;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 700);
+                let reply = `[${moduleType.toUpperCase()} BOT]: Processed successfully. Automated workflow triggered!`;
+                if(moduleType === 'trainer') reply = `[Corporate Trainer]: SOP verified. Staff guideline sent to team channel.`;
+                if(moduleType === 'student') reply = `[Student Tutor]: Great question! Here is your step-by-step breakdown...`;
+                box.innerHTML += `<div class="bg-slate-800 p-2.5 rounded-xl text-slate-200 max-w-[80%]">${reply}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 600);
         }
 
-        function simulateOCRScan() {
-            const amountBox = document.getElementById('ocr-sample-amount');
-            const randomAmt = Math.floor(Math.random() * 50000) + 5000;
-            amountBox.innerText = `+ ${userProfile.currency}${randomAmt.toLocaleString()}.00`;
-            alert(`Altra Lens OCR successful! Extracted receipt and updated bookkeeping P&L ledger automatically in ${userProfile.currency}.`);
+        function simulateLensScan() {
+            const log = document.getElementById('lens-log');
+            const amt = Math.floor(Math.random() * 40000) + 10000;
+            log.innerHTML = `<span class="text-emerald-400 font-bold">Successfully Logged:</span> Vendor: Tech Supplies • Amount: ${userProfile.currency}${amt.toLocaleString()} added to Bookkeeping P&L.`;
+            alert('Altra Lens OCR extracted invoice data and updated P&L ledger automatically!');
+        }
+
+        function generateAdMedia(type) {
+            const prompt = document.getElementById('ad-prompt').value || 'Altra AI Automation';
+            const output = document.getElementById('media-output-box');
+            if(type === 'image') {
+                output.innerHTML = `<div class="text-emerald-400 font-bold">Generated Ad Image Concept:</div><p class="text-slate-300 mt-1">"High-tech futuristic dashboard displaying ${prompt} with glowing neon emerald accents, optimized for Facebook & Instagram feeds."</p>`;
+            } else {
+                output.innerHTML = `<div class="text-indigo-400 font-bold">Generated 15s Video Script:</div><p class="text-slate-300 mt-1">"Scene 1: Struggling business owner. Scene 2: Altra AI voice agent answers missed call. Scene 3: Profits soar. Call to action: Visit krishnyanshzenovapeaks.com"</p>`;
+            }
         }
     </script>
 </body>
