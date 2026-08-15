@@ -1,46 +1,120 @@
-async function sendModuleChat(moduleType) {
-    const input = document.getElementById(`input-${moduleType}`);
-    const text = input.value.trim();
-    if(!text) return;
+<script>
+    lucide.createIcons();
 
-    const box = document.getElementById(`chat-messages-${moduleType}`);
-    box.innerHTML += `<div class="bg-emerald-600 text-slate-950 p-2.5 rounded-xl ml-auto max-w-[80%] font-medium">${text}</div>`;
-    input.value = '';
-    box.scrollTop = box.scrollHeight;
+    let userProfile = { name: "Zenova Peak", country: "NG", currency: "₦" };
 
-    const loadingId = 'loading-' + Date.now();
-    box.innerHTML += `
-        <div id="${loadingId}" class="bg-slate-800 p-2.5 rounded-xl text-slate-400 max-w-[80%] italic">
-            Altra AI is processing your request...
-        </div>
-    `;
-    box.scrollTop = box.scrollHeight;
-
-    try {
-        const response = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                prompt: text,
-                clientId: userProfile.name,
-                service: moduleType,
-                country: document.getElementById('biz-country').value,
-                currency: "₦",
-                category: document.getElementById('biz-category').value
-            })
-        });
-
-        const data = await response.json();
-        document.getElementById(loadingId).remove();
-
-        if (data.success) {
-            box.innerHTML += `<div class="bg-slate-800 p-2.5 rounded-xl text-slate-200 max-w-[80%]">${data.reply}</div>`;
-        } else {
-            throw new Error(data.error || 'API response failed');
-        }
-    } catch (error) {
-        document.getElementById(loadingId).remove();
-        box.innerHTML += `<div class="bg-rose-950 border border-rose-800 text-rose-200 p-2.5 rounded-xl max-w-[80%]">Error connecting to server: ${error.message}</div>`;
+    function handleSignUp(e) {
+        e.preventDefault();
+        userProfile.name = document.getElementById('biz-name').value;
+        document.getElementById('display-business-name').innerText = userProfile.name;
+        document.getElementById('signup-view').classList.add('hidden');
+        document.getElementById('dashboard-view').classList.remove('hidden');
+        document.getElementById('user-profile-pill').classList.remove('hidden');
+        document.getElementById('user-profile-pill').classList.add('flex');
     }
-    box.scrollTop = box.scrollHeight;
-}
+
+    function handleLogout() {
+        document.getElementById('dashboard-view').classList.add('hidden');
+        document.getElementById('signup-view').classList.remove('hidden');
+        document.getElementById('user-profile-pill').classList.remove('flex');
+        document.getElementById('user-profile-pill').classList.add('hidden');
+    }
+
+    function switchTab(tabName) {
+        ['altra', 'creator', 'trainer', 'student', 'omnichannel', 'voice', 'reality', 'media'].forEach(t => {
+            const el = document.getElementById(`module-${t}`);
+            const btn = document.getElementById(`tab-btn-${t}`);
+            if(el) el.classList.add('hidden');
+            if(btn) {
+                btn.classList.remove('bg-emerald-500', 'text-slate-950');
+                btn.classList.add('bg-slate-800', 'text-white');
+            }
+        });
+        const activeEl = document.getElementById(`module-${tabName}`);
+        const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+        if(activeEl) activeEl.classList.remove('hidden');
+        if(activeBtn) {
+            activeBtn.classList.remove('bg-slate-800', 'text-white');
+            activeBtn.classList.add('bg-emerald-500', 'text-slate-950');
+        }
+    }
+
+    async function sendModuleChat(moduleType) {
+        const input = document.getElementById(`input-${moduleType}`);
+        const text = input.value.trim();
+        if(!text) return;
+
+        const box = document.getElementById(`chat-messages-${moduleType}`);
+        box.innerHTML += `<div class="bg-emerald-600 text-slate-950 p-2.5 rounded-xl ml-auto max-w-[80%] font-medium">${text}</div>`;
+        input.value = '';
+        box.scrollTop = box.scrollHeight;
+
+        const loadingId = 'loading-' + Date.now();
+        box.innerHTML += `
+            <div id="${loadingId}" class="bg-slate-800 p-2.5 rounded-xl text-slate-400 max-w-[80%] italic">
+                Altra AI is processing your request...
+            </div>
+        `;
+        box.scrollTop = box.scrollHeight;
+
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    prompt: text,
+                    clientId: userProfile.name,
+                    service: moduleType,
+                    country: document.getElementById('biz-country').value,
+                    currency: "₦",
+                    category: document.getElementById('biz-category').value
+                })
+            });
+
+            const data = await response.json();
+            document.getElementById(loadingId).remove();
+
+            if (data.success) {
+                box.innerHTML += `<div class="bg-slate-800 p-2.5 rounded-xl text-slate-200 max-w-[80%]">${data.reply}</div>`;
+            } else {
+                throw new Error(data.error || 'API response failed');
+            }
+        } catch (error) {
+            document.getElementById(loadingId).remove();
+            box.innerHTML += `<div class="bg-rose-950 border border-rose-800 text-rose-200 p-2.5 rounded-xl max-w-[80%]">Error connecting to server: ${error.message}</div>`;
+        }
+        box.scrollTop = box.scrollHeight;
+    }
+
+    function generateCreatorContent() {
+        const topic = document.getElementById('creator-topic').value || 'AI Automation';
+        const platform = document.getElementById('creator-platform').value;
+        const output = document.getElementById('creator-output');
+
+        output.innerHTML = `
+            <p class="font-bold text-emerald-400">🔥 Viral Hook (${platform}):</p>
+            <p class="text-slate-300">"Stop doing manual tasks! Discover how ${topic} is changing businesses forever."</p>
+            <p class="font-bold text-emerald-400 mt-2">📝 Full Script / Outline:</p>
+            <p class="text-slate-300">1. Problem: Manual data entry and slow client response times.<br>2. Agitation: Losing 40% of leads overnight.<br>3. Solution: Deploying Altra AI automation suite via krishnyanshzenovapeaks.com.</p>
+            <p class="font-bold text-emerald-400 mt-2"># Tags:</p>
+            <p class="text-indigo-300">#AltraAI #ZenovaPeak #BusinessAutomation #${topic.replace(/\s+/g, '')} #TechHub</p>
+        `;
+    }
+
+    function simulateLensScan() {
+        const log = document.getElementById('lens-log');
+        const amt = Math.floor(Math.random() * 40000) + 10000;
+        log.innerHTML = `<span class="text-emerald-400 font-bold">Successfully Logged:</span> Vendor: Vendor Bills • Amount: ${userProfile.currency}${amt.toLocaleString()} added to Bookkeeping P&L.`;
+        alert('Altra Lens OCR extracted invoice data and updated P&L ledger automatically!');
+    }
+
+    function generateAdMedia(type) {
+        const prompt = document.getElementById('ad-prompt').value || 'Altra AI Automation';
+        const output = document.getElementById('media-output-box');
+        if(type === 'image') {
+            output.innerHTML = `<div class="text-emerald-400 font-bold">Generated Ad Image Concept:</div><p class="text-slate-300 mt-1">"High-tech futuristic dashboard displaying ${prompt} with glowing neon emerald accents, optimized for Facebook & Instagram feeds."</p>`;
+        } else {
+            output.innerHTML = `<div class="text-indigo-400 font-bold">Generated 15s Video Script:</div><p class="text-slate-300 mt-1">"Scene 1: Struggling business owner. Scene 2: Altra AI voice agent answers missed call on +2349067862223. Scene 3: Profits soar. Call to action: Visit krishnyanshzenovapeaks.com"</p>`;
+        }
+    }
+</script>
