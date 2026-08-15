@@ -47,7 +47,7 @@ app.post('/api/chat', async (req, res) => {
             }
 
             chatSessions[sessionKey] = ai.chats.create({
-                model: 'gemini-2.5-flash',
+                model: 'gemini-3.5-flash',
                 config: {
                     systemInstruction: roleInstruction
                 }
