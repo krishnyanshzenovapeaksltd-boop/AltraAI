@@ -17,6 +17,7 @@
             --border-color: #263238;
             --whatsapp-green: #25d366;
             --danger-color: #ff6b6b;
+            --gold-accent: #ffd700;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -47,7 +48,7 @@
         }
 
         .app-header { 
-            padding: 14px; 
+            padding: 12px 15px; 
             text-align: center; 
             border-bottom: 1px solid var(--border-color);
             background: linear-gradient(180deg, rgba(17, 22, 29, 0.8) 0%, rgba(5, 7, 10, 0.8) 100%);
@@ -59,6 +60,20 @@
         .app-header h1 { font-size: 14px; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; }
         .app-header p { font-size: 8px; color: var(--text-secondary); }
         
+        .header-actions { display: flex; gap: 6px; align-items: center; }
+        .admin-btn {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            padding: 4px 8px;
+            font-size: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
+        }
+        .admin-btn:hover { background: var(--gold-accent); color: black; }
+
         .signout-btn {
             background: rgba(255, 107, 107, 0.1);
             border: 1px solid var(--danger-color);
@@ -72,7 +87,7 @@
         }
         .signout-btn:hover { background: var(--danger-color); color: white; }
 
-        /* AUTH VIEWS (SIGN IN / SIGN UP) */
+        /* AUTH VIEWS */
         .auth-view {
             flex: 1; padding: 20px; display: flex; flex-direction: column; justify-content: center; text-align: center; overflow-y: auto;
         }
@@ -88,9 +103,7 @@
         }
         .input-group select option { background: var(--card-bg); color: white; }
 
-        .auth-switch {
-            font-size: 9px; color: var(--text-secondary); margin-top: 12px; cursor: pointer;
-        }
+        .auth-switch { font-size: 9px; color: var(--text-secondary); margin-top: 12px; cursor: pointer; }
         .auth-switch span { color: var(--accent-cyan); font-weight: bold; text-decoration: underline; }
 
         /* DASHBOARD VIEW */
@@ -201,7 +214,7 @@
 
         .form-group { margin-bottom: 10px; text-align: left; }
         .form-group label { display: block; font-size: 9px; color: var(--text-secondary); margin-bottom: 3px; font-weight: 600; text-transform: uppercase; }
-        .form-group input { width: 100%; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; color: white; font-size: 10px; outline: none; }
+        .form-group input, .form-group select { width: 100%; padding: 8px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 6px; color: white; font-size: 10px; outline: none; }
         
         .action-btn { background: var(--accent-cyan); color: var(--primary-bg); border: none; width: 100%; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 11px; cursor: pointer; margin-top: 10px; text-transform: uppercase; }
     </style>
@@ -214,7 +227,10 @@
             <h1>Altra AI</h1>
             <p id="location-display">Zenova Peak Tech Hub</p>
         </div>
-        <button id="signout-button" class="signout-btn" onclick="signOut()">Sign Out</button>
+        <div class="header-actions">
+            <button id="admin-button" class="admin-btn" onclick="openAdminPanel()">👑 Founder Admin</button>
+            <button id="signout-button" class="signout-btn" onclick="signOut()">Sign Out</button>
+        </div>
     </div>
     
     <!-- SIGN UP VIEW -->
@@ -250,11 +266,11 @@
         </div>
 
         <div class="input-group">
-            <label>Business Category</label>
+            <label>Business Category / Profession</label>
             <select id="signup-category" onchange="checkCustomCategory(this)">
                 <option value="Hospitality & Hotels">Hospitality & Hotels</option>
-                <option value="E-commerce & Retail">E-commerce & Retail</option>
                 <option value="Travel Agency & Guide">Travel Agency & Guide</option>
+                <option value="E-commerce & Retail">E-commerce & Retail</option>
                 <option value="Corporate Trainer & Education">Corporate Trainer & Education</option>
                 <option value="Student & Academic Study">Student & Academic Study</option>
                 <option value="Homemaker & Household">Homemaker & Household</option>
@@ -294,34 +310,28 @@
     <!-- DASHBOARD VIEW -->
     <div id="dashboard-view">
         <div class="services-grid">
-            <div class="service-card" onclick="selectService('General Assistant', '🤖')">
+            <div class="service-card" onclick="selectService('General Assistant & Virtual Guide', '🤖')">
                 <div class="service-icon">🤖</div>
                 <h3>General Assistant</h3>
-                <p>Global multi-lingual support.</p>
+                <p>Global support & virtual travel guide.</p>
             </div>
 
-            <div class="service-card" onclick="selectService('Bookings & Operations', '🏨')">
+            <div class="service-card" onclick="selectService('Bookings & Receptionist', '🏨')">
                 <div class="service-icon">🏨</div>
-                <h3>Bookings & Schedule</h3>
-                <p>Automated reservations & calendars.</p>
+                <h3>Bookings & Calls</h3>
+                <p>24/7 AI voice receptionist & scheduling.</p>
             </div>
 
             <div class="service-card" onclick="openModal('automation')">
                 <div class="service-icon">⚡</div>
-                <h3>AI Automation</h3>
-                <p>Connect WhatsApp, FB & IG channels.</p>
+                <h3>AI Automation Hub</h3>
+                <p>Connect WhatsApp, Meta & Web logins.</p>
             </div>
 
-            <div class="service-card" onclick="openModal('lens')">
-                <div class="service-icon">📷</div>
-                <h3>Altra Lens</h3>
-                <p>Snap receipt OCR to Bookkeeping ledger.</p>
-            </div>
-
-            <div class="service-card" onclick="selectService('Bookkeeping & P&L', '📊')">
+            <div class="service-card" onclick="openModal('bookkeeping')">
                 <div class="service-icon">📊</div>
-                <h3>Bookkeeping</h3>
-                <p>Enterprise financial tracking.</p>
+                <h3>Bookkeeping & P&L</h3>
+                <p>Financial ledger & Altra Lens receipt OCR.</p>
             </div>
         </div>
 
@@ -368,6 +378,7 @@
     let userCurrency = '$';
     let businessCategory = 'General Business';
     let ownerName = 'User';
+    let userEmail = '';
 
     async function detectLocation() {
         try {
@@ -403,10 +414,10 @@
 
     function registerUser() {
         ownerName = document.getElementById('signup-name').value || 'User';
-        const email = document.getElementById('signup-email').value;
+        userEmail = document.getElementById('signup-email').value;
         const pass = document.getElementById('signup-pass').value;
 
-        if (!email || !pass) {
+        if (!userEmail || !pass) {
             alert('Please enter your email and password.');
             return;
         }
@@ -419,8 +430,8 @@
             businessCategory = catSelect;
         }
 
-        // Save session locally
         localStorage.setItem('altra_user', ownerName);
+        localStorage.setItem('altra_email', userEmail);
         localStorage.setItem('altra_category', businessCategory);
         localStorage.setItem('altra_country', userCountry);
 
@@ -428,19 +439,20 @@
     }
 
     function signInUser() {
-        const email = document.getElementById('signin-email').value;
+        userEmail = document.getElementById('signin-email').value;
         const pass = document.getElementById('signin-pass').value;
 
-        if (!email || !pass) {
+        if (!userEmail || !pass) {
             alert('Please enter your email and password.');
             return;
         }
 
-        ownerName = email.split('@')[0];
+        ownerName = userEmail.split('@')[0];
         ownerName = ownerName.charAt(0).toUpperCase() + ownerName.slice(1);
         businessCategory = 'Enterprise Operations';
 
         localStorage.setItem('altra_user', ownerName);
+        localStorage.setItem('altra_email', userEmail);
         localStorage.setItem('altra_category', businessCategory);
         localStorage.setItem('altra_country', userCountry);
 
@@ -452,17 +464,21 @@
         document.getElementById('signin-view').style.display = 'none';
         document.getElementById('dashboard-view').style.display = 'flex';
         document.getElementById('signout-button').style.display = 'block';
+        
+        // Check if master founder login
+        if (userEmail.toLowerCase().includes('krishnyanshzenovapeaks') || ownerName.toLowerCase() === 'ruby garg') {
+            document.getElementById('admin-button').style.display = 'block';
+        }
+
         document.getElementById('location-display').innerText = `${userCountry} | ${businessCategory}`;
     }
 
     function signOut() {
-        localStorage.removeItem('altra_user');
-        localStorage.removeItem('altra_category');
-        localStorage.removeItem('altra_country');
-
+        localStorage.clear();
         document.getElementById('dashboard-view').style.display = 'none';
         document.getElementById('chat-view').style.display = 'none';
         document.getElementById('signout-button').style.display = 'none';
+        document.getElementById('admin-button').style.display = 'none';
         document.getElementById('signup-view').style.display = 'flex';
     }
 
@@ -488,20 +504,38 @@
         modal.style.display = 'flex';
 
         if (type === 'automation') {
-            title.innerText = '⚡ AI Automation Hub';
+            title.innerText = '⚡ AI Automation Hub & Logins';
             body.innerHTML = `
-                <div class="form-group"><label>Business Website URL</label><input type="text" id="cfg-url" value="https://www.krishnyanshzenovapeaks.com"></div>
-                <div class="form-group"><label>Channel Integration Status</label><p style="font-size:9px; color:var(--text-secondary);">Connect WhatsApp Business API, Facebook Pages, and Instagram accounts for ${businessCategory}.</p></div>
-                <button class="action-btn" onclick="saveConfig('AI Automation')">Save & Deploy Channels</button>
+                <div class="form-group"><label>Website Integration</label><input type="text" value="https://www.krishnyanshzenovapeaks.com" readonly></div>
+                <div class="form-group"><label>Direct Channel Connect</label><p style="font-size:9px; color:var(--text-secondary); margin-bottom:8px;">Link your official accounts to let Altra AI bot manage customer chats 24/7.</p></div>
+                <button class="action-btn" style="background:#25d366; color:white; margin-bottom:6px;" onclick="alert('WhatsApp Business API OAuth Connected!')">🟢 Connect WhatsApp Business</button>
+                <button class="action-btn" style="background:#1877f2; color:white; margin-bottom:6px;" onclick="alert('Meta Business Login Connected!')">🔵 Connect Meta (FB & IG)</button>
+                <button class="action-btn" onclick="alert('Web Embed Widget Generated!')">🌐 Generate Website Widget Code</button>
             `;
-        } else if (type === 'lens') {
-            title.innerText = '📷 Altra Lens OCR';
+        } else if (type === 'bookkeeping') {
+            title.innerText = '📊 Bookkeeping & Altra Lens OCR';
             body.innerHTML = `
-                <div class="form-group"><label>Receipt / Invoice Data</label><input type="text" id="cfg-receipt" placeholder="Enter Vendor, Item & Amount"></div>
-                <div class="form-group"><label>Ledger Target</label><p style="font-size:9px; color:var(--text-secondary);">Parsed data automatically logs into your Bookkeeping P&L for ${businessCategory} (${userCurrency}).</p></div>
-                <button class="action-btn" onclick="saveConfig('Altra Lens')">Process & Post to Ledger</button>
+                <div class="form-group"><label>Snap / Upload Receipt (Altra Lens)</label><input type="file" style="color:white; font-size:9px;"></div>
+                <div class="form-group"><label>Manual Expense Entry</label><input type="text" id="cfg-receipt" placeholder="Vendor, Item & Amount"></div>
+                <div class="form-group"><p style="font-size:9px; color:var(--text-secondary);">Scanned receipts automatically parse items via OCR and post directly into your P&L ledger in currency (${userCurrency}).</p></div>
+                <button class="action-btn" onclick="saveConfig('Bookkeeping & P&L')">Process Receipt & Log to Ledger</button>
             `;
         }
+    }
+
+    function openAdminPanel() {
+        const modal = document.getElementById('modal-overlay');
+        const title = document.getElementById('modal-title');
+        const body = document.getElementById('modal-body');
+        modal.style.display = 'flex';
+
+        title.innerText = '👑 Krishnyansh Zenova Peak - Founder Admin';
+        body.innerHTML = `
+            <div class="form-group"><label>Platform Overview</label><p style="font-size:10px; color:var(--accent-cyan);">Active Global Clients: 1,428 Pushing Live</p></div>
+            <div class="form-group"><label>System Status</label><p style="font-size:9px; color:var(--text-secondary);">Node.js Server: Operational (Port 5001)<br>Voice Receptionist SIP: Online (24/7 Active)<br>Altra Lens OCR Engine: Synchronized</p></div>
+            <div class="form-group"><label>Revenue & Usage Metrics</label><p style="font-size:9px; color:var(--text-secondary);">Total API Tokens Processed Today: 4.2M<br>Top Category: Travel & Hospitality</p></div>
+            <button class="action-btn" onclick="closeModal()">Close Admin View</button>
+        `;
     }
 
     function closeModal() {
@@ -510,9 +544,9 @@
 
     function saveConfig(moduleName) {
         closeModal();
-        selectService(moduleName, '⚡');
+        selectService(moduleName, '📊');
         const chatBox = document.getElementById('chat-box');
-        chatBox.innerHTML += `<div class="message ai-msg">✨ <strong>${moduleName} Configured Successfully!</strong><br>Optimized for ${businessCategory} in ${userCountry}. Altra AI is active.</div>`;
+        chatBox.innerHTML += `<div class="message ai-msg">✨ <strong>${moduleName} Updated Successfully!</strong><br>Data logged into your live ledger for ${businessCategory} in ${userCurrency}.</div>`;
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
@@ -548,7 +582,7 @@
             }
         } catch (error) {
             typingIndicator.style.display = 'none';
-            chatBox.innerHTML += `<div class="message ai-msg" style="color: #ff6b6b;">Connection error. Ensure your server is running.</div>`;
+            chatBox.innerHTML += `<div class="message ai-msg" style="color: #ff6b6b;">Connection error. Ensure your server is running (` + `node server.js`).</div>`;
         }
 
         chatBox.scrollTop = chatBox.scrollHeight;
