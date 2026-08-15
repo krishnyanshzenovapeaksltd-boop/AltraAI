@@ -255,6 +255,57 @@
                 <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="share-2" class="w-5 h-5 text-emerald-400"></i><span>Omnichannel Client Deployment Hub</span></h3>
                 <p class="text-xs text-slate-400 mb-6">Connect and deploy your custom AI bot directly across multiple customer touchpoints with single clicks.</p>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+  <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl mx-auto flex items-center justify-center font-bold">MIC</div>
+  <h4 class="font-bold text-sm text-white">Voice Assistant</h4>
+  <p id="voice-status" class="text-xs text-slate-400">Click to talk to Altra AI</p>
+  <button id="start-voice-btn" onclick="toggleVoiceAssistant()" class="w-full py-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-lg transition">Start Voice Chat</button>
+</div>
+
+<script>
+  let isListening = false;
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  
+  function toggleVoiceAssistant() {
+    if (!SpeechRecognition) {
+      alert("Speech recognition is not supported in this browser. Please use Google Chrome.");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+
+    const statusText = document.getElementById("voice-status");
+    const btn = document.getElementById("start-voice-btn");
+
+    if (!isListening) {
+      recognition.start();
+      isListening = true;
+      statusText.textContent = "Listening... Speak now.";
+      btn.textContent = "Stop & Send";
+      btn.classList.replace("bg-emerald-500", "bg-rose-500");
+
+      recognition.onresult = (event) => {
+        const spokenText = event.results[0][0].transcript;
+        statusText.textContent = `You said: "${spokenText}"`;
+        speakResponse("I received your message for Altra AI automation.");
+      };
+
+      recognition.onend = () => {
+        isListening = false;
+        btn.textContent = "Start Voice Chat";
+        btn.classList.replace("bg-rose-500", "bg-emerald-500");
+      };
+    }
+  }
+
+  function speakResponse(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    window.speechSynthesis.speak(utterance);
+    document.getElementById("voice-status").textContent = text;
+  }
+</script>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl mx-auto flex items-center justify-center font-bold">WA</div>
                         <h4 class="font-bold text-sm text-white">WhatsApp Business</h4>
