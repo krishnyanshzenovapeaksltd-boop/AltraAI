@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altra AI | Global Business Operating System & Media Studio</title>
+    <title>Altra AI | Global Business Operating System & Creator Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -17,8 +18,8 @@
     <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shadow-lg">
-                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <div class="w-10 h-10 rounded-xl overflow-hidden bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shadow-lg">
+                    <img src="icon.png" alt="Altra AI Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h1 class="font-bold text-lg tracking-wide text-white">ALTRA AI SUITE</h1>
@@ -40,7 +41,7 @@
         <div id="signup-view" class="max-w-md mx-auto w-full bg-slate-900/80 border border-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl backdrop-blur-md">
             <div class="text-center mb-6">
                 <h2 class="text-2xl font-bold text-white">Activate Altra AI Suite</h2>
-                <p class="text-sm text-slate-400 mt-1">Deploy multi-bot corporate, student, voice, and media engines.</p>
+                <p class="text-sm text-slate-400 mt-1">Deploy multi-bot corporate, student, voice, media, and creator engines.</p>
             </div>
 
             <form id="signup-form" onsubmit="handleSignUp(event)" class="space-y-4">
@@ -68,8 +69,8 @@
                         <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Primary Industry</label>
                         <select id="biz-category" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
                             <option value="Tech & Automation">Tech & Automation</option>
+                            <option value="Content Creation">Content Creation & Media</option>
                             <option value="Corporate Training">Corporate Training & EdTech</option>
-                            <option value="E-Commerce">Global E-Commerce</option>
                         </select>
                     </div>
                 </div>
@@ -90,6 +91,10 @@
                     <button onclick="switchTab('altra')" id="tab-btn-altra" class="px-3 py-2 bg-emerald-500 text-slate-950 rounded-xl font-bold text-xs flex items-center space-x-1.5 transition">
                         <i data-lucide="globe" class="w-3.5 h-3.5"></i>
                         <span>AltraAI & Bookkeeping</span>
+                    </button>
+                    <button onclick="switchTab('creator')" id="tab-btn-creator" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span>Content Creator Studio</span>
                     </button>
                     <button onclick="switchTab('trainer')" id="tab-btn-trainer" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
                         <i data-lucide="users" class="w-3.5 h-3.5"></i>
@@ -147,6 +152,44 @@
                 </div>
             </div>
 
+            <!-- MODULE NEW: CONTENT CREATOR STUDIO -->
+            <div id="module-creator" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-base text-white flex items-center space-x-2"><i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i><span>Altra Content Creator Studio</span></h3>
+                        <p class="text-xs text-slate-400">Generate viral hooks, YouTube scripts, Instagram/TikTok captions, and content calendars in 1 click.</p>
+                    </div>
+                    <span class="text-xs px-2.5 py-1 bg-emerald-500/20 text-emerald-400 rounded-lg font-semibold">Creator Mode Active</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Content Topic / Niche</label>
+                            <input type="text" id="creator-topic" placeholder="e.g. AI Business Automation" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-400 mb-1">Target Platform</label>
+                            <select id="creator-platform" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                                <option value="YouTube">YouTube Long-form / Shorts</option>
+                                <option value="TikTok">TikTok / Instagram Reels</option>
+                                <option value="LinkedIn">LinkedIn Professional Post</option>
+                                <option value="Twitter">Twitter / X Thread</option>
+                            </select>
+                        </div>
+                        <button onclick="generateCreatorContent()" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition">Generate Content Kit</button>
+                    </div>
+
+                    <div class="md:col-span-2 bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between h-[320px]">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Generated Content Output</h4>
+                        <div id="creator-output" class="flex-1 overflow-y-auto bg-slate-900/80 p-3 rounded-lg border border-slate-800 text-xs text-slate-200 my-2 space-y-2">
+                            <span class="text-slate-500 italic">Select topic and platform, then click generate to create viral hooks, full scripts, and hashtags.</span>
+                        </div>
+                        <button onclick="alert('Content copied to clipboard successfully!')" class="py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-lg">Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- MODULE 2: CORPORATE TRAINER BOT -->
             <div id="module-trainer" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <div class="flex justify-between items-center mb-4">
@@ -185,28 +228,28 @@
 
             <!-- MODULE 4: OMNICHANNEL HUB (FB, Insta, WhatsApp, Web) -->
             <div id="module-omnichannel" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-                <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="share-2" class="w-5 h-5 text-emerald-400"><span>Omnichannel Client Deployment Hub</span></h3>
+                <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="share-2" class="w-5 h-5 text-emerald-400"></i><span>Omnichannel Client Deployment Hub</span></h3>
                 <p class="text-xs text-slate-400 mb-6">Connect and deploy your custom AI bot directly across multiple customer touchpoints with single clicks.</p>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl mx-auto flex items-center justify-center font-bold">WA</div>
                         <h4 class="font-bold text-sm text-white">WhatsApp Business</h4>
-                        <button onclick="alert('WhatsApp webhook synced successfully!')" class="w-full py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-lg">Connected</button>
+                        <button onclick="alert('WhatsApp webhook synced successfully! Bot is live for client numbers +2349067862223.')" class="w-full py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-lg">Connected</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl mx-auto flex items-center justify-center font-bold">FB</div>
                         <h4 class="font-bold text-sm text-white">Facebook Messenger</h4>
-                        <button onclick="alert('Facebook Messenger auto-reply active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
+                        <button onclick="alert('Facebook Messenger auto-reply active for your page!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-pink-500/20 text-pink-400 rounded-xl mx-auto flex items-center justify-center font-bold">IG</div>
                         <h4 class="font-bold text-sm text-white">Instagram DM Engine</h4>
-                        <button onclick="alert('Instagram comment-to-DM active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
+                        <button onclick="alert('Instagram comment-to-DM conversion active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-amber-500/20 text-amber-400 rounded-xl mx-auto flex items-center justify-center font-bold">WEB</div>
                         <h4 class="font-bold text-sm text-white">Website Embed Widget</h4>
-                        <button onclick="alert('Embed script copied to clipboard!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Get Script</button>
+                        <button onclick="alert('Widget snippet copied! Paste into krishnyanshzenovapeaks.com footer.')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Get Script</button>
                     </div>
                 </div>
             </div>
@@ -220,7 +263,7 @@
                         <span class="text-xs text-emerald-400 font-bold uppercase">Active Voice Line</span>
                         <h4 class="text-lg font-bold text-white">+234 906 786 2223</h4>
                         <p class="text-xs text-slate-400">AI Voice Assistant: Enabled (Professional English & Pidgin accent support)</p>
-                        <button onclick="alert('Test call simulator triggered. Ringing your device...')" class="py-2 px-4 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl">Test Voice Agent Call</button>
+                        <button onclick="alert('Test call simulator triggered. Inbound voice agent active on +2349067862223.')" class="py-2 px-4 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl">Test Voice Agent Call</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
                         <span class="text-xs text-slate-400 font-bold uppercase">Latest Call Transcript</span>
@@ -242,7 +285,7 @@
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
                         <span class="text-xs text-slate-400">Cross-Border Payment Speed</span>
                         <div class="text-xl font-bold text-white mt-1">&lt; 3.2 Seconds</div>
-                        <p class="text-[11px] text-emerald-400 mt-1">Multi-currency automated reconciliation.</p>
+                        <p class="text-[11px] text-slate-400 mt-1">Multi-currency automated reconciliation.</p>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
                         <span class="text-xs text-slate-400">Client Retention Boost</span>
@@ -260,7 +303,7 @@
                     <div class="space-y-4 bg-slate-950 p-4 rounded-xl border border-slate-800">
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 mb-1">Ad Prompt / Product Description</label>
-                            <input type="text" id="ad-prompt" placeholder="e.g., Professional AI Automation for African Businesses" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                            <input type="text" id="ad-prompt" placeholder="e.g., Altra AI Automation for Enterprises" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
                         </div>
                         <div class="flex space-x-2">
                             <button onclick="generateAdMedia('image')" class="flex-1 py-2 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl">Generate Ad Image</button>
@@ -309,14 +352,22 @@
         }
 
         function switchTab(tabName) {
-            ['altra', 'trainer', 'student', 'omnichannel', 'voice', 'reality', 'media'].forEach(t => {
-                document.getElementById(`module-${t}`).classList.add('hidden');
-                document.getElementById(`tab-btn-${t}`).classList.remove('bg-emerald-500', 'text-slate-950');
-                document.getElementById(`tab-btn-${t}`).classList.add('bg-slate-800', 'text-white');
+            ['altra', 'creator', 'trainer', 'student', 'omnichannel', 'voice', 'reality', 'media'].forEach(t => {
+                const el = document.getElementById(`module-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if(el) el.classList.add('hidden');
+                if(btn) {
+                    btn.classList.remove('bg-emerald-500', 'text-slate-950');
+                    btn.classList.add('bg-slate-800', 'text-white');
+                }
             });
-            document.getElementById(`module-${tabName}`).classList.remove('hidden');
-            document.getElementById(`tab-btn-${tabName}`).classList.remove('bg-slate-800', 'text-white');
-            document.getElementById(`tab-btn-${tabName}`).classList.add('bg-emerald-500', 'text-slate-950');
+            const activeEl = document.getElementById(`module-${tabName}`);
+            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+            if(activeEl) activeEl.classList.remove('hidden');
+            if(activeBtn) {
+                activeBtn.classList.remove('bg-slate-800', 'text-white');
+                activeBtn.classList.add('bg-emerald-500', 'text-slate-950');
+            }
         }
 
         function sendModuleChat(moduleType) {
@@ -330,18 +381,36 @@
             box.scrollTop = box.scrollHeight;
 
             setTimeout(() => {
-                let reply = `[${moduleType.toUpperCase()} BOT]: Processed successfully. Automated workflow triggered!`;
-                if(moduleType === 'trainer') reply = `[Corporate Trainer]: SOP verified. Staff guideline sent to team channel.`;
-                if(moduleType === 'student') reply = `[Student Tutor]: Great question! Here is your step-by-step breakdown...`;
+                let reply = `[AltraAI Global]: Analysis and automated execution completed for "${text}".`;
+                if(moduleType === 'trainer') {
+                    reply = `[Corporate Trainer Bot]: Regarding "${text}", our company SOP mandates compliance and ticket resolution within 2 hours.`;
+                } else if(moduleType === 'student') {
+                    reply = `[Student Tutor Bot]: Excellent academic query on "${text}"! Here is your step-by-step master breakdown...`;
+                }
                 box.innerHTML += `<div class="bg-slate-800 p-2.5 rounded-xl text-slate-200 max-w-[80%]">${reply}</div>`;
                 box.scrollTop = box.scrollHeight;
             }, 600);
         }
 
+        function generateCreatorContent() {
+            const topic = document.getElementById('creator-topic').value || 'AI Automation';
+            const platform = document.getElementById('creator-platform').value;
+            const output = document.getElementById('creator-output');
+
+            output.innerHTML = `
+                <p class="font-bold text-emerald-400">🔥 Viral Hook (${platform}):</p>
+                <p class="text-slate-300">"Stop doing manual tasks! Discover how ${topic} is changing businesses forever."</p>
+                <p class="font-bold text-emerald-400 mt-2">📝 Full Script / Outline:</p>
+                <p class="text-slate-300">1. Problem: Manual data entry and slow client response times.<br>2. Agitation: Losing 40% of leads overnight.<br>3. Solution: Deploying Altra AI automation suite via krishnyanshzenovapeaks.com.</p>
+                <p class="font-bold text-emerald-400 mt-2"># Tags:</p>
+                <p class="text-indigo-300">#AltraAI #ZenovaPeak #BusinessAutomation #${topic.replace(/\s+/g, '')} #TechHub</p>
+            `;
+        }
+
         function simulateLensScan() {
             const log = document.getElementById('lens-log');
             const amt = Math.floor(Math.random() * 40000) + 10000;
-            log.innerHTML = `<span class="text-emerald-400 font-bold">Successfully Logged:</span> Vendor: Tech Supplies • Amount: ${userProfile.currency}${amt.toLocaleString()} added to Bookkeeping P&L.`;
+            log.innerHTML = `<span class="text-emerald-400 font-bold">Successfully Logged:</span> Vendor: Vendor Bills • Amount: ${userProfile.currency}${amt.toLocaleString()} added to Bookkeeping P&L.`;
             alert('Altra Lens OCR extracted invoice data and updated P&L ledger automatically!');
         }
 
@@ -351,7 +420,7 @@
             if(type === 'image') {
                 output.innerHTML = `<div class="text-emerald-400 font-bold">Generated Ad Image Concept:</div><p class="text-slate-300 mt-1">"High-tech futuristic dashboard displaying ${prompt} with glowing neon emerald accents, optimized for Facebook & Instagram feeds."</p>`;
             } else {
-                output.innerHTML = `<div class="text-indigo-400 font-bold">Generated 15s Video Script:</div><p class="text-slate-300 mt-1">"Scene 1: Struggling business owner. Scene 2: Altra AI voice agent answers missed call. Scene 3: Profits soar. Call to action: Visit krishnyanshzenovapeaks.com"</p>`;
+                output.innerHTML = `<div class="text-indigo-400 font-bold">Generated 15s Video Script:</div><p class="text-slate-300 mt-1">"Scene 1: Struggling business owner. Scene 2: Altra AI voice agent answers missed call on +2349067862223. Scene 3: Profits soar. Call to action: Visit krishnyanshzenovapeaks.com"</p>`;
             }
         }
     </script>
