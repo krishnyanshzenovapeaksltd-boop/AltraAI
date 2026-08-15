@@ -1,6 +1,6 @@
 // ==========================================
 // ALTRA AI CLIENT AUTOMATION BACKEND
-// Zenova Peak Tech Hub | Founder: Ruby Garg
+// Zenova Peak Tech Hub(KRISHNYANSH ZENOVA PEAKS) | Founder: RubyGarg
 // ==========================================
 
 const express = require('express');
