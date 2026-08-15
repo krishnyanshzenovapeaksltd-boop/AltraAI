@@ -1,6 +1,6 @@
 // ==========================================
 // ALTRA AI CLIENT AUTOMATION BACKEND
-// Zenova Peak Tech Hub(KRISHNYANSH ZENOVA PEAKS) | Founder: RubyGarg
+// Zenova Peak Tech Hub | Founder: RubyGarg
 // ==========================================
 
 const express = require('express');
@@ -22,8 +22,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.json({ 
         message: "Altra AI Automation Engine is live!", 
-        company: "Zenova Peak Tech Hub",
-        founder: "Ruby Garg"
+        company: "krishnyansh zenova peaks ltd",
+        founder: "RubyGarg"
     });
 });
 
