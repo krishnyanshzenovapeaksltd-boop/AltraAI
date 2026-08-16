@@ -247,6 +247,38 @@
                     <div class="bg-slate-900 p-3 rounded-xl text-slate-200">Welcome student! What topic or programming language would you like to master today?</div>
                 </div>
                 <div class="flex space-x-2">
+                    <select id="signup-industry" name="primaryIndustry">
+    <optgroup label="Energy, Tech & Manufacturing">
+        <option value="solar">Solar & Renewable Energy</option>
+        <option value="tech">Tech & Software Automation</option>
+        <option value="manufacturing">Manufacturers & Industrial Production</option>
+        <option value="it">Local IT Services & Support</option>
+    </optgroup>
+    <optgroup label="Tourism, Travel & Hospitality">
+        <option value="tourism">Tourism & Travel Agencies</option>
+        <option value="tourguide">Local Itinerary Guides & Tour Operators</option>
+        <option value="hospitality">Hotels, Resorts & Bookings</option>
+        <option value="restaurants">Restaurants, Cafes & Food Services</option>
+    </optgroup>
+    <optgroup label="Corporate, Finance & Legal">
+        <option value="finance">Finance, Banking & Accounting</option>
+        <option value="registration">Corporate Registration & Business Setup</option>
+        <option value="legal">Legal Services & Consultancy</option>
+        <option value="corporate">Existing Business & Corporate Firms</option>
+    </optgroup>
+    <optgroup label="Education, Training & Media">
+        <option value="training">Trainers, Coaches & Educators</option>
+        <option value="students">Students & Academic Researchers</option>
+        <option value="media">Content Creators, Media & Influencers</option>
+    </optgroup>
+    <optgroup label="Daily Life & Services">
+        <option value="household">Household Management & Home Services</option>
+        <option value="healthcare">Healthcare, Wellness & Clinics</option>
+        <option value="realestate">Real Estate & Property Management</option>
+        <option value="retail">Retail, E-Commerce & Fashion</option>
+        <option value="other">Any Other Global Business / Custom Service</option>
+    </optgroup>
+</select>
                     <input type="text" id="input-student" placeholder="Ask tutor anything (e.g., Explain JavaScript async/await)..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('student')">
                     <button onclick="sendModuleChat('student')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Ask Tutor</button>
                 </div>
