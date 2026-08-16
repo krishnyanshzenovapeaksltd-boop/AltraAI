@@ -493,14 +493,30 @@
             alert(`Voice Agent speaking: "${textToSpeak}"`);
         }
 
-        function generateAdMedia(type) {
+       
+        }function generateAdMedia(type) {
             const prompt = document.getElementById('ad-prompt').value || 'Altra AI Automation Suite';
             const output = document.getElementById('media-output-box');
             
             if(type === 'image') {
-                output.innerHTML = `<div class="text-emerald-400 font-bold">Generated Ad Image Concept:</div><p class="text-slate-300 mt-1">"High-tech futuristic visual representation for '${prompt}', featuring glowing neon emerald accents, optimized for Facebook & Instagram conversion campaigns."</p>`;
+                // Generates a real high-converting visual representation based on your prompt keywords
+                const encodedPrompt = encodeURIComponent(prompt + ", high quality, professional marketing ad, futuristic digital tech");
+                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=500&nologo=true`;
+                
+                output.innerHTML = `
+                    <div class="text-emerald-400 font-bold mb-2">Generated Live Ad Image:</div>
+                    <img src="${imageUrl}" alt="Generated Ad" class="rounded-xl border border-slate-700 w-full object-cover shadow-lg max-h-[240px]" />
+                    <p class="text-[11px] text-slate-400 mt-2">Rendered instantly for: "${prompt}"</p>
+                `;
             } else {
-                output.innerHTML = `<div class="text-indigo-400 font-bold">Generated 15s Video Script:</div><p class="text-slate-300 mt-1">"Scene 1: Business owner seeking automation. Scene 2: Altra AI handles inquiries and bookkeeping for '${prompt}'. Scene 3: Revenue multiplies. Call to action: Visit krishnyanshzenovapeaks.com"</p>`;
+                output.innerHTML = `
+                    <div class="text-indigo-400 font-bold mb-1">Generated 15s Video Script & Motion Storyboard:</div>
+                    <div class="text-left bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1 text-slate-300">
+                        <p><strong>Scene 1 (0-5s):</strong> Problem statement text animation focusing on "${prompt}".</p>
+                        <p><strong>Scene 2 (5-10s):</strong> Altra AI automated multi-tenant workflow dashboard execution.</p>
+                        <p><strong>Scene 3 (10-15s):</strong> Call to Action: Visit <strong>krishnyanshzenovapeaks.com</strong></p>
+                    </div>
+                `;
             }
         }
     </script>
