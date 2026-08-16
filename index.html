@@ -261,11 +261,27 @@
   <p id="voice-status" class="text-xs text-slate-400">Click to talk to Altra AI</p>
   <button id="start-voice-btn" onclick="toggleVoiceAssistant()" class="w-full py-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-lg transition">Start Voice Chat</button>
 </div>.
-<!-- Live Facebook Messenger Button -->
-<button onclick="triggerLiveAutomation('Facebook Messenger')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect FB API</button>
+<!-- 
+                    
+        body: JSON.stringify({ userMessage: 'Sync client channels', platform: platformName })
+      });
+      const data = await response.json();
+      alert(data.reply);
+    } catch (error) {
+      alert("Error connecting to server endpoint.");
+    }
+         <!-- Live Facebook Messenger Button -->
+<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+  <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl mx-auto flex items-center justify-center font-bold">FB</div>
+  <h4 class="font-bold text-sm text-white">Facebook Messenger</h4>
+  <button onclick="triggerLiveAutomation('Facebook Messenger')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect</button>
+</div>
 
-<!-- Live Instagram DM Button -->
-<button onclick="triggerLiveAutomation('Instagram DM')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect IG API</button>
+<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
+  <div class="w-10 h-10 bg-pink-500/20 text-pink-400 rounded-xl mx-auto flex items-center justify-center font-bold">IG</div>
+  <h4 class="font-bold text-sm text-white">Instagram DM Engine</h4>
+  <button onclick="triggerLiveAutomation('Instagram DM')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect</button>
+</div>
 
 <script>
   async function triggerLiveAutomation(platformName) {
@@ -280,6 +296,8 @@
     } catch (error) {
       alert("Error connecting to server endpoint.");
     }
+  }
+</script>       
   }
 </script>
                     
