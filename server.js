@@ -4,40 +4,39 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Middleware to parse JSON and urlencoded data
+// In-memory global logs to track worldwide app usage
+global.appLogs = {
+    bookings: [],
+    invoices: [],
+    queries: [],
+    activeUsers: 0
+};
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Serve static files from the root project directory
 app.use(express.static(path.join(__dirname)));
 
-// API endpoint for Altra AI chat and automation workflows
-app.post('/api/chat', (req, res) => {
-    const { module, message } = req.body;
-    let responseText = `Processed workflow for ${module}: "${message}"`;
+// Worldwide Activity Receiver Endpoint
+app.post('/api/telemetry', (req, res) => {
+    const event = req.body;
+    console.log(`[WORLDWIDE EVENT - ${event.type.toUpperCase()}]:`, event.data);
     
-    if (module === 'trainer') {
-        responseText = `[Backend Corporate Trainer]: SOP and compliance verified for "${message}". Guideline broadcasted to internal channels.`;
-    } else if (module === 'student') {
-        responseText = `[Backend Student Tutor]: Academic breakdown and study resources compiled for "${message}".`;
-    } else if (module === 'altra') {
-        responseText = `[Altra AI Global Engine]: Multi-tenant automation successfully synchronized for query: "${message}".`;
-    }
+    if (event.type === 'booking') global.appLogs.bookings.push(event.data);
+    if (event.type === 'invoice') global.appLogs.invoices.push(event.data);
+    if (event.type === 'query') global.appLogs.queries.push(event.data);
 
-    res.json({ success: true, reply: responseText });
+    res.json({ success: true, message: "Telemetry recorded on Zenova Peak server." });
 });
 
-// API endpoint for Meta / WhatsApp / omnichannel webhooks
-app.post('/api/webhook', (req, res) => {
-    console.log("Incoming Webhook Event:", req.body);
-    res.status(200).send('EVENT_RECEIVED');
+// Admin Dashboard Endpoint to view worldwide activity
+app.get('/api/admin/logs', (req, res) => {
+    res.json(global.appLogs);
 });
 
-// Fallback route using regex format to prevent path-to-regexp parsing errors
 app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => {
-    console.log(`Zenova Peak Tech Hub server is running live on port ${PORT}`);
+    console.log(`Zenova Peak Tech Hub backend tracking live on port ${PORT}`);
 });
