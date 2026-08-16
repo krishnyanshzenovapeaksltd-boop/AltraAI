@@ -104,5 +104,48 @@ app.post('/api/whatsapp-webhook', async (req, res) => {
 });
 
 app.listen(PORT, () => {
+    // Meta Webhook Verification (Required by Facebook & Instagram Developers)
+app.get('/webhook', (req, res) => {
+  const VERIFY_TOKEN = "krishnyansh_secure_token";
+  
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  if (mode && token) {
+    if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+      console.log('WEBHOOK_VERIFIED');
+      res.status(200).send(challenge);
+    } else {
+      res.sendStatus(403);
+    }
+  }
+});
+
+// Handle Incoming Messages from Facebook Messenger & Instagram DMs
+app.post('/webhook', (req, res) => {
+  const body = req.body;
+
+  if (body.object === 'page' || body.object === 'instagram') {
+    body.entry.forEach(entry => {
+      const event = entry.messaging ? entry.messaging[0] : entry.changes;
+      console.log('Live message processed by Altra AI backend:', event);
+    });
+    res.status(200).send('EVENT_RECEIVED');
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+// Live Widget Automation Endpoint for Client Dashboards
+app.post('/api/automation', async (req, res) => {
+  const { userMessage, platform } = req.body;
+  
+  // Process inquiry through your system logic
+  res.json({ 
+    success: true, 
+    reply: `Altra AI automated response deployed for ${platform}.` 
+  });
+});
     console.log(`Altra AI Server running smoothly on port ${PORT}`);
 });
