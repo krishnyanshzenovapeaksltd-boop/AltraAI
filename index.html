@@ -522,7 +522,7 @@
         let userProfile = { name: "Zenova Peak", country: "NG", currency: "₦" };
         let mediaStream = null;
 
-      function handleSignUp(e) {
+     function handleSignUp(e) {
             if(e) e.preventDefault();
             
             const nameInput = document.getElementById('biz-name');
@@ -530,13 +530,20 @@
                 userProfile.name = nameInput.value;
             }
             
-            // Force hide login screen and reveal main app
-            const loginScreen = document.getElementById('login-screen');
-            const mainApp = document.getElementById('main-app');
+            // Hide the login/activation card wrapper
+            const loginCard = document.querySelector('form').closest('.rounded-2xl, .bg-slate-900, div');
+            if(loginCard) {
+                loginCard.style.display = 'none';
+            }
             
-            if(loginScreen) loginScreen.style.display = 'none';
-            if(mainApp) mainApp.classList.remove('hidden');
+            // Reveal the main dashboard app area
+            const mainApp = document.getElementById('main-app');
+            if(mainApp) {
+                mainApp.classList.remove('hidden');
+                mainApp.style.display = 'block';
+            }
         }
+        
     </script>
 </body>
 </html>
