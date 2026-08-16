@@ -54,18 +54,19 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-// WhatsApp Webhook Verification (Meta Cloud API requirement)
-app.get('/api/whatsapp-webhook', (req, res) => {
-    const VERIFY_TOKEN = "altra_secure_token";
-    const mode = req.query['hub.mode'];
-    const token = req.query['hub.verify_token'];
-    const challenge = req.query['hub.challenge'];
+// Webhook verification endpoint for Meta
+app.get('/api/webhook', (req, res) => {
+  const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
+  
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
 
-    if (mode && token === VERIFY_TOKEN) {
-        res.status(200).send(challenge);
-    } else {
-        res.sendStatus(403);
-    }
+  if (mode === 'subscribe' && token === VERIFY_TOKEN) {
+    res.status(200).send(challenge);
+  } else {
+    res.sendStatus(403);
+  }
 });
 
 // WhatsApp Inbound Message Handler
