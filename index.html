@@ -260,8 +260,29 @@
   <h4 class="font-bold text-sm text-white">Voice Assistant</h4>
   <p id="voice-status" class="text-xs text-slate-400">Click to talk to Altra AI</p>
   <button id="start-voice-btn" onclick="toggleVoiceAssistant()" class="w-full py-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-lg transition">Start Voice Chat</button>
-</div>
+</div>.
+<!-- Live Facebook Messenger Button -->
+<button onclick="triggerLiveAutomation('Facebook Messenger')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect FB API</button>
 
+<!-- Live Instagram DM Button -->
+<button onclick="triggerLiveAutomation('Instagram DM')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect IG API</button>
+
+<script>
+  async function triggerLiveAutomation(platformName) {
+    try {
+      const response = await fetch('/api/automation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userMessage: 'Sync client channels', platform: platformName })
+      });
+      const data = await response.json();
+      alert(data.reply);
+    } catch (error) {
+      alert("Error connecting to server endpoint.");
+    }
+  }
+</script>
+                    
 <script>
   let isListening = false;
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
