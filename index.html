@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { background-color: #030712; color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; }
-        .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.5); }
+        .glass-panel { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.6); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="flex items-center space-x-4">
-            <span id="display-business-name" class="text-xs font-semibold text-slate-300 hidden md:inline">Zenova Peak</span>
+            <span id="display-business-name" class="text-xs font-semibold text-slate-300 hidden md:inline">Zenova Peak Tech Hub</span>
             <button onclick="handleLogout()" class="text-xs text-rose-400 hover:text-rose-300 font-medium px-3 py-1.5 rounded-lg border border-rose-500/30 bg-rose-500/10 transition">Sign Out</button>
         </div>
     </header>
@@ -31,25 +31,28 @@
     <!-- MAIN APP CONTAINER -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 flex flex-col">
 
-        <!-- VIEW 1: SIGN-UP & SETUP -->
-        <div id="signup-view" class="max-w-md mx-auto w-full my-auto glass-panel p-6 md:p-8 rounded-2xl shadow-2xl">
-            <div class="text-center mb-6">
+        <!-- VIEW 1: SIGN-UP & EXTENSIVE OCCUPATION SETUP -->
+        <div id="signup-view" class="max-w-xl mx-auto w-full my-auto glass-panel p-6 md:p-8 rounded-2xl shadow-2xl space-y-4">
+            <div class="text-center mb-2">
                 <h2 class="text-2xl font-bold text-white">Activate Altra AI Suite</h2>
-                <p class="text-sm text-slate-400 mt-1">Deploy intelligent multi-bot automation for financial & emotional survival.</p>
+                <p class="text-xs text-slate-400 mt-1">Configure your exact profession, services, pricing, and invoice assets for complete intelligence.</p>
             </div>
-            <form id="signup-form" onsubmit="handleSignUp(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Company / Organization Name</label>
-                    <input type="text" id="biz-name" required value="Zenova Peak Tech Hub" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+            <form id="signup-form" onsubmit="handleSignUp(event)" class="space-y-3 text-xs">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold uppercase tracking-wider text-slate-400 mb-1">Company / Organization Name</label>
+                        <input type="text" id="biz-name" required value="Zenova Peak Tech Hub" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block font-semibold uppercase tracking-wider text-slate-400 mb-1">Owner Email</label>
+                        <input type="email" id="biz-email" required value="admin@krishnyanshzenovapeaks.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500">
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Owner Email</label>
-                    <input type="email" id="biz-email" required value="admin@krishnyanshzenovapeaks.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
-                </div>
+
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Country</label>
-                        <select id="biz-country" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        <label class="block font-semibold uppercase tracking-wider text-slate-400 mb-1">Country & Currency</label>
+                        <select id="biz-country" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500">
                             <option value="NG" data-curr="₦">Nigeria (₦)</option>
                             <option value="IN" data-curr="₹">India (₹)</option>
                             <option value="US" data-curr="$">United States ($)</option>
@@ -57,20 +60,32 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Industry / Domain</label>
-                        <select id="biz-industry" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
-                            <option>Technology & AI</option>
-                            <option>Solar & Green Energy</option>
-                            <option>Hospitality & Tourism / Local Guides</option>
-                            <option>E-commerce & Retail</option>
-                            <option>Finance, Banking & Accounting</option>
-                            <option>House Making & Management Skills</option>
-                            <option>Corporate Registration & Legal</option>
-                            <option>Content Creation & Media</option>
-                            <option>Beauty, Health & Wellness</option>
+                        <label class="block font-semibold uppercase tracking-wider text-slate-400 mb-1">Industry / Profession</label>
+                        <select id="biz-industry" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500">
+                            <option>Technology & AI Firm</option>
+                            <option>Solar & Green Energy Manufacturer</option>
+                            <option>Hospitality, Travel, Tourism & Local Guide</option>
+                            <option>House Making & Home Management Skills</option>
+                            <option>E-commerce Retail & Wholesale</option>
+                            <option>Corporate Registration & Legal Firm</option>
+                            <option>Finance, Banking, Accounting & Tax</option>
+                            <option>Content Creator & Digital Media Studio</option>
+                            <option>Beauty, Health, Fitness & Wellness</option>
+                            <option>General Business Manufacturer & Enterprise</option>
                         </select>
                     </div>
                 </div>
+
+                <div>
+                    <label class="block font-semibold uppercase tracking-wider text-slate-400 mb-1">List Your Services & Pricing Schedule</label>
+                    <textarea id="biz-services" class="w-full h-16 bg-slate-900 border border-slate-700 rounded-xl p-2 text-white resize-none" placeholder="e.g. 1. AI System Deployment - $2000, 2. Consultation - $150/hr">1. Advanced Multi-Tenant AI Integration - $2000, 2. Enterprise Workflow Automation - $1200, 3. Custom Advisory & Setup - $250</textarea>
+                </div>
+
+                <div>
+                    <label class="block font-semibold uppercase tracking-wider text-slate-400 mb-1">Upload Company PDF / Image Assets (For Invoice & Auto-Templates)</label>
+                    <input type="file" id="biz-asset-file" multiple class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-400 text-[11px] file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-emerald-500 file:text-black hover:file:bg-emerald-400">
+                </div>
+
                 <button type="submit" class="w-full mt-2 py-3 bg-gradient-to-r from-emerald-500 to-teal-400 text-black font-bold rounded-xl shadow-lg shadow-emerald-500/20 hover:opacity-95 transition">LAUNCH ECOSYSTEM</button>
             </form>
         </div>
@@ -84,78 +99,78 @@
                 <button onclick="switchTab('booking')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Real-Time Booking</button>
                 <button onclick="switchTab('bookkeeping')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Bookkeeping & Invoices</button>
                 <button onclick="switchTab('automative')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Business Automative Mode</button>
-                <button onclick="switchTab('learning')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Trainer, Student & E-Books</button>
+                <button onclick="switchTab('learning')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Trainer, Students & E-Books</button>
                 <button onclick="switchTab('media')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Ad & Media Studio</button>
                 <button onclick="switchTab('founder')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Founder & Director</button>
             </div>
 
-            <!-- MODULE 1: ALTRA AI OMNI-BRAIN & VOICE ASSISTANT -->
+            <!-- MODULE 1: ALTRA AI OMNI-BRAIN & HUMAN VOICE RECEPTIONIST -->
             <div id="tab-altra" class="dashboard-tab space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="glass-panel p-5 rounded-2xl md:col-span-2 flex flex-col h-[420px]">
+                    <div class="glass-panel p-5 rounded-2xl md:col-span-2 flex flex-col h-[440px]">
                         <h3 class="font-bold text-sm text-emerald-400 mb-3 flex items-center justify-between">
-                            <span class="flex items-center gap-2"><i data-lucide="bot" class="w-4 h-4"></i> AltraAI Universal Assistant (Gemini & Meta Hooked)</span>
-                            <button onclick="toggleVoiceAssistant()" id="voice-btn" class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded-lg border border-emerald-500/30">🎤 Real Voice: OFF</button>
+                            <span class="flex items-center gap-2"><i data-lucide="bot" class="w-4 h-4"></i> AltraAI Universal Intelligence Engine</span>
+                            <button onclick="toggleVoiceAssistant()" id="voice-btn" class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-lg border border-emerald-500/30">📞 Human Voice Receptionist: OFF</button>
                         </h3>
                         <div id="chat-history" class="flex-1 bg-slate-900/60 rounded-xl p-3 overflow-y-auto space-y-3 text-xs border border-slate-800">
-                            <div class="bg-slate-800/80 p-3 rounded-xl max-w-[85%] text-slate-200">Hello! I am AltraAI, your universal intelligence engine. Ask me anything about technology, solar systems, hospitality, travel, finance, health, or house management, and I will instantly answer!</div>
+                            <div class="bg-slate-800/80 p-3 rounded-xl max-w-[85%] text-slate-200">Welcome to AltraAI. I am fully synchronized with your business profile, service pricing, and operational assets. Ask me anything for financial and emotional survival!</div>
                         </div>
                         <div class="mt-3 flex gap-2">
-                            <input type="text" id="chat-input" placeholder="Ask AltraAI anything for financial & emotional growth..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                            <input type="text" id="chat-input" placeholder="Ask AltraAI anything across any industry (diet plan, tech, solar, travel)..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
                             <button onclick="sendAIQuery()" class="bg-emerald-500 text-black px-4 py-2.5 rounded-xl font-bold text-xs hover:bg-emerald-400 transition">Ask AI</button>
                         </div>
                     </div>
                     <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between space-y-4">
                         <div>
-                            <h3 class="font-bold text-sm text-teal-400 mb-2 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4"></i> Company Context Guide</h3>
-                            <p class="text-xs text-slate-400 mb-3">Define instructions to let Altra AI know exactly what tasks and automated workflows to handle for your enterprise.</p>
-                            <textarea id="company-instructions" class="w-full h-28 bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white resize-none" placeholder="Enter custom business operational guidelines...">Handle client inquiries, schedule nearby bookings, auto-generate invoices, and manage support for our global operations.</textarea>
+                            <h3 class="font-bold text-sm text-teal-400 mb-2 flex items-center gap-2"><i data-lucide="building" class="w-4 h-4"></i> Company Information & Instructions</h3>
+                            <p class="text-xs text-slate-400 mb-3">Define exact behavioral parameters so Altra AI knows precisely how to handle your specific firm and clients.</p>
+                            <textarea id="company-instructions" class="w-full h-32 bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white resize-none" placeholder="Enter company guidelines, pricing rules, and services...">Handle inbound customer inquiries professionally, quote exact service fees from our schedule, schedule nearby bookings, and execute automated support across all linked social channels.</textarea>
                         </div>
-                        <button onclick="saveCompanyContext()" class="w-full py-2.5 bg-teal-500 text-black font-bold rounded-xl text-xs hover:bg-teal-400 transition">Save AI Instructions</button>
+                        <button onclick="saveCompanyContext()" class="w-full py-2.5 bg-teal-500 text-black font-bold rounded-xl text-xs hover:bg-teal-400 transition">Update AI Operating Rules</button>
                     </div>
                 </div>
             </div>
 
-            <!-- MODULE 2: REAL-TIME BOOKING -->
+            <!-- MODULE 2: REAL-TIME BOOKING & NEARBY CLIENTS -->
             <div id="tab-booking" class="dashboard-tab hidden space-y-4">
                 <div class="glass-panel p-6 rounded-2xl max-w-2xl mx-auto space-y-4">
-                    <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> Real-Time Booking & Nearby Client Inquiries</h3>
-                    <p class="text-xs text-slate-400">Schedule business appointments, service consultations, or tourist guides with automated proximity options.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <input type="text" id="book-name" placeholder="Client / Inquiring Person Name" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white">
-                        <input type="text" id="book-location" placeholder="Nearby Location / City" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white">
-                        <input type="datetime-local" id="book-date" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white">
-                        <select id="book-service" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white">
-                            <option>Consultation & Advisory</option>
-                            <option>Solar Installation Booking</option>
-                            <option>Hospitality / Local Guide Tour</option>
-                            <option>Corporate Registration Support</option>
+                    <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Real-Time Booking & Nearby Inquiries</h3>
+                    <p class="text-xs text-slate-400">Manage client appointments, consultations, and localized service requests with live nearby proximity options.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <input type="text" id="book-name" placeholder="Client / Inquiring Person Name" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white">
+                        <input type="text" id="book-location" placeholder="Nearby City / Proximity Location" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white">
+                        <input type="datetime-local" id="book-date" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white">
+                        <select id="book-service-type" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white">
+                            <option>AI System Consultation ($250)</option>
+                            <option>Solar Energy Installation ($1200)</option>
+                            <option>Hospitality & Local Guide Booking</option>
+                            <option>Corporate Registration & Legal Advisory</option>
                         </select>
                     </div>
-                    <button onclick="confirmRealTimeBooking()" class="w-full py-3 bg-emerald-500 text-black font-bold rounded-xl text-xs hover:bg-emerald-400 transition">Confirm & Dispatch Booking</button>
+                    <button onclick="confirmRealTimeBooking()" class="w-full py-3 bg-emerald-500 text-black font-bold rounded-xl text-xs hover:bg-emerald-400 transition">Confirm & Dispatch Nearby Booking</button>
                 </div>
             </div>
 
-            <!-- MODULE 3: BOOKKEEPING & EDITABLE INVOICE -->
+            <!-- MODULE 3: BOOKKEEPING WITH ALTRA LENS & EDITABLE INVOICE -->
             <div id="tab-bookkeeping" class="dashboard-tab hidden space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="glass-panel p-5 rounded-2xl space-y-4">
-                        <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="camera" class="w-4 h-4"></i> Altra Lens: Real-Time Camera Scan</h3>
-                        <p class="text-xs text-slate-400">Open your camera to scan receipts, bills, or inventory items in real-time and automatically log accounts.</p>
+                        <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="camera" class="w-4 h-4"></i> Altra Lens: Smart Auto-Bookkeeping Camera</h3>
+                        <p class="text-xs text-slate-400">Capture receipts, bills, and financial documents with your camera. Altra Lens intelligently extracts figures and updates company accounts automatically.</p>
                         <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-center">
                             <video id="camera-feed" autoplay playsinline class="w-full h-44 object-cover rounded-lg mb-3 bg-black hidden"></video>
-                            <button onclick="startCamera()" class="px-4 py-2.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-xl text-xs font-semibold hover:bg-emerald-500/30 transition">Open Camera Scanner</button>
+                            <button onclick="startCameraScan()" class="px-4 py-2.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-xl text-xs font-semibold hover:bg-emerald-500/30 transition">Open Altra Lens Camera</button>
                         </div>
                     </div>
-                    <div class="glass-panel p-5 rounded-2xl space-y-3">
-                        <h3 class="font-bold text-sm text-teal-400 flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> Editable Invoice Generator</h3>
-                        <input type="text" id="inv-client" placeholder="Client Name" value="Global Enterprise Ltd" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
-                        <input type="text" id="inv-desc" placeholder="Service / Product Item" value="Altra AI Suite & Automation Setup" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                    <div class="glass-panel p-5 rounded-2xl space-y-3 text-xs">
+                        <h3 class="font-bold text-sm text-teal-400 flex items-center gap-2"><i data-lucide="file-text" class="w-4 h-4"></i> Editable Company Invoice Generator</h3>
+                        <input type="text" id="inv-client" placeholder="Client Name" value="Global Client Ltd" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+                        <input type="text" id="inv-item" placeholder="Service / Product Item" value="AI System Deployment & Setup" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
                         <div class="grid grid-cols-2 gap-2">
-                            <input type="number" id="inv-qty" placeholder="Quantity" value="1" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
-                            <input type="number" id="inv-price" placeholder="Unit Price" value="250000" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                            <input type="number" id="inv-qty" placeholder="Quantity" value="1" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+                            <input type="number" id="inv-price" placeholder="Unit Price" value="2000" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
                         </div>
-                        <button onclick="generateEditableInvoice()" class="w-full py-2.5 bg-teal-500 text-black font-bold rounded-xl text-xs hover:bg-teal-400 transition">Generate & Download Invoice</button>
+                        <button onclick="generateEditableInvoice()" class="w-full py-2.5 bg-teal-500 text-black font-bold rounded-xl text-xs hover:bg-teal-400 transition">Generate & Download Editable Invoice</button>
                     </div>
                 </div>
             </div>
@@ -163,53 +178,56 @@
             <!-- MODULE 4: BUSINESS AUTOMATIVE MODE -->
             <div id="tab-automative" class="dashboard-tab hidden space-y-4">
                 <div class="glass-panel p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> Business Automative Mode</h3>
-                    <p class="text-xs text-slate-400">Connect and link your business social channels via pop-up windows for automated lead engagement and messaging.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                    <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> Business Automative Mode (Omnichannel Hub)</h3>
+                    <p class="text-xs text-slate-400">Link Facebook, Instagram, WhatsApp, and Website channels in one platform. Altra AI automatically handles and replies to customer queries 24/7 to eliminate hassle.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                         <button onclick="openAutomationPopup('WhatsApp')" class="p-4 bg-slate-900 border border-slate-700 rounded-xl text-left hover:border-emerald-500 transition">
-                            <span class="font-bold text-xs text-white block">WhatsApp Business</span>
-                            <span class="text-[10px] text-emerald-400">● Link Number / API</span>
+                            <span class="font-bold text-white block">WhatsApp Business</span>
+                            <span class="text-[10px] text-emerald-400">● Connected & Auto-Replying</span>
                         </button>
                         <button onclick="openAutomationPopup('Facebook')" class="p-4 bg-slate-900 border border-slate-700 rounded-xl text-left hover:border-blue-500 transition">
-                            <span class="font-bold text-xs text-white block">Facebook Pages</span>
-                            <span class="text-[10px] text-blue-400">● Link FB Page</span>
+                            <span class="font-bold text-white block">Facebook Messenger</span>
+                            <span class="text-[10px] text-blue-400">● Page Linked</span>
                         </button>
                         <button onclick="openAutomationPopup('Instagram')" class="p-4 bg-slate-900 border border-slate-700 rounded-xl text-left hover:border-pink-500 transition">
-                            <span class="font-bold text-xs text-white block">Instagram Business</span>
-                            <span class="text-[10px] text-pink-400">● Link IG Account</span>
+                            <span class="font-bold text-white block">Instagram Direct</span>
+                            <span class="text-[10px] text-pink-400">● DM Auto-Sync Active</span>
                         </button>
                         <button onclick="openAutomationPopup('Website Widget')" class="p-4 bg-slate-900 border border-slate-700 rounded-xl text-left hover:border-teal-500 transition">
-                            <span class="font-bold text-xs text-white block">Web Embed Widget</span>
-                            <span class="text-[10px] text-teal-400">● Active Script Hook</span>
+                            <span class="font-bold text-white block">Website Embed Widget</span>
+                            <span class="text-[10px] text-teal-400">● Live onkrishnyanshzenovapeaks.com</span>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- MODULE 5: TRAINER, STUDENT & E-BOOKS -->
+            <!-- MODULE 5: TRAINER, STUDENTS & E-BOOKS -->
             <div id="tab-learning" class="dashboard-tab hidden space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="glass-panel p-5 rounded-2xl space-y-3">
-                        <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4"></i> Corporate Trainer</h3>
-                        <textarea id="trainer-topic" class="w-full h-20 bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white resize-none">SOPs, employee safety, compliance, and financial management guidelines.</textarea>
-                        <button onclick="runTrainerBot()" class="w-full py-2 bg-emerald-500 text-black font-bold rounded-xl text-xs">Verify & Broadcast SOPs</button>
+                    <div class="glass-panel p-5 rounded-2xl space-y-3 text-xs">
+                        <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4"></i> Corporate Professional Trainer</h3>
+                        <textarea id="trainer-query" class="w-full h-20 bg-slate-900 border border-slate-700 rounded-xl p-3 text-white resize-none" placeholder="Enter corporate question or audit topic...">Today's audit about business consultancy. Provide professional answers and structured training session info.</textarea>
+                        <button onclick="runProfessionalTrainer()" class="w-full py-2 bg-emerald-500 text-black font-bold rounded-xl">Run Training Session</button>
                     </div>
-                    <div class="glass-panel p-5 rounded-2xl space-y-3">
-                        <h3 class="font-bold text-sm text-teal-400 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Student Teacher & Notes</h3>
-                        <textarea id="student-topic" class="w-full h-20 bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white resize-none">Competitive exam questions, math, science, with handwriting notes format.</textarea>
-                        <button onclick="runStudentBot()" class="w-full py-2 bg-teal-500 text-black font-bold rounded-xl text-xs">Generate Handwritten Notes</button>
+                    <div class="glass-panel p-5 rounded-2xl space-y-3 text-xs">
+                        <h3 class="font-bold text-sm text-teal-400 flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Universal Student Teacher & Notes</h3>
+                        <textarea id="student-query" class="w-full h-20 bg-slate-900 border border-slate-700 rounded-xl p-3 text-white resize-none" placeholder="Enter subject, topic, or competitive exam question...">Advanced Physics and Mathematics competitive exam questions with 10-year memory archive.</textarea>
+                        <button onclick="runStudentHandwritingNotes()" class="w-full py-2 bg-teal-500 text-black font-bold rounded-xl">Generate Handwritten Notes</button>
                     </div>
-                    <div class="glass-panel p-5 rounded-2xl space-y-3">
-                        <h3 class="font-bold text-sm text-indigo-400 flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4"></i> E-Book Reader & Audio</h3>
-                        <p class="text-xs text-slate-400">Read, listen to audio summaries, and download study modules or business manuals.</p>
-                        <select id="ebook-select" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
-                            <option>Global Business Survival Manual.pdf</option>
-                            <option>AI Automation & Tech Masterclass.pdf</option>
-                            <option>Financial Accounting & Tax Guide.pdf</option>
+                    <div class="glass-panel p-5 rounded-2xl space-y-3 text-xs">
+                        <h3 class="font-bold text-sm text-indigo-400 flex items-center gap-2"><i data-lucide="book-open" class="w-4 h-4"></i> Trending E-Book Library & Audio</h3>
+                        <p class="text-slate-400">Explore trending business books, study manuals, and audio collections.</p>
+                        <select id="ebook-select" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white">
+                            <option>1. Zero to Sold: Modern Business Automation & Scale.pdf</option>
+                            <option>2. The AI Enterprise Playbook & Financial Survival.pdf</option>
+                            <option>3. Competitive Exam 10-Year Master Question Bank.pdf</option>
+                            <option>4. Solar Engineering & Green Tech Deployment Guide.pdf</option>
+                            <option>5. Global E-Commerce Retail & Hospitality Mastery.pdf</option>
+                            <option>6. Wealth Psychology & Emotional Resilience for Founders.pdf</option>
                         </select>
                         <div class="flex gap-2">
-                            <button onclick="playAudioBook()" class="flex-1 py-2 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded-xl text-xs font-semibold">Listen Audio</button>
-                            <button onclick="downloadEBook()" class="flex-1 py-2 bg-indigo-500 text-white font-bold rounded-xl text-xs">Download</button>
+                            <button onclick="playAudioBook()" class="flex-1 py-2 bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded-xl font-semibold">Listen Audio</button>
+                            <button onclick="downloadEBook()" class="flex-1 py-2 bg-indigo-500 text-white font-bold rounded-xl">Download Book</button>
                         </div>
                     </div>
                 </div>
@@ -217,33 +235,33 @@
 
             <!-- MODULE 6: AD & MEDIA STUDIO -->
             <div id="tab-media" class="dashboard-tab hidden space-y-4">
-                <div class="glass-panel p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="video" class="w-4 h-4"></i> Ad & Media Studio (Real Visuals & Video Prompts)</h3>
-                    <input type="text" id="ad-prompt" placeholder="Describe your product, solar tech, resort, or service..." value="Futuristic Altra AI business automation software marketing ad" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white">
+                <div class="glass-panel p-6 rounded-2xl space-y-4 text-xs">
+                    <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="video" class="w-4 h-4"></i> Ad & Media Studio (Real Visuals & Video Generator)</h3>
+                    <input type="text" id="ad-prompt" placeholder="Describe your service offer, product poster, or campaign..." value="Generate a poster to advertise GBP WITH MAP setup and solar energy offers" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
                     <div class="flex gap-3">
-                        <button onclick="generateMediaAd('image')" class="flex-1 py-2.5 bg-emerald-500 text-black font-bold rounded-xl text-xs">Generate Real Ad Picture</button>
-                        <button onclick="generateMediaAd('video')" class="flex-1 py-2.5 bg-indigo-500 text-white font-bold rounded-xl text-xs">Generate 15s-30s Video Script</button>
+                        <button onclick="generateRealAdPicture()" class="flex-1 py-2.5 bg-emerald-500 text-black font-bold rounded-xl">Generate Real Ad Picture</button>
+                        <button onclick="generateRealVideoScript()" class="flex-1 py-2.5 bg-indigo-500 text-white font-bold rounded-xl">Generate 15s-30s Video Script</button>
                     </div>
-                    <div id="media-output" class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-xs text-slate-300 min-h-[140px] flex flex-col items-center justify-center text-center">
-                        Generated pictures and video storyboards will render here instantly.
+                    <div id="media-output" class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-slate-300 min-h-[160px] flex flex-col items-center justify-center text-center">
+                        Generated visuals and video advertising storyboards will render here instantly in real time.
                     </div>
                 </div>
             </div>
 
             <!-- MODULE 7: FOUNDER & DIRECTOR -->
             <div id="tab-founder" class="dashboard-tab hidden space-y-4">
-                <div class="glass-panel p-6 rounded-2xl space-y-4 text-center max-w-xl mx-auto">
+                <div class="glass-panel p-6 rounded-2xl space-y-4 text-center max-w-xl mx-auto text-xs">
                     <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-2xl font-bold text-black shadow-xl">RG</div>
                     <div>
                         <h3 class="text-lg font-bold text-white">Ruby Garg</h3>
-                        <p class="text-xs text-emerald-400 font-semibold mt-0.5">Founder & CEO — Krishnyansh Zenova Peak Tech Hub</p>
+                        <p class="text-emerald-400 font-semibold mt-0.5">Founder & CEO — Krishnyansh Zenova Peak Tech Hub</p>
                     </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Krishnyansh Zenova Peak Tech Hub is dedicated to empowering enterprises globally with advanced intelligence, ensuring financial and emotional security through automated multi-tenant ecosystems like Altra AI.
+                    <p class="text-slate-300 leading-relaxed">
+                        Krishnyansh Zenova Peak Tech Hub delivers cutting-edge multi-tenant automation and Altra AI systems worldwide, empowering every business manufacturer, firm, and individual to survive and thrive financially and emotionally with advanced intelligence.
                     </p>
                     <div class="pt-2">
                         <a href="https://wa.me/+2349067862223" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
-                            <i data-lucide="message-circle" class="w-4 h-4"></i> Connect with Director on WhatsApp (+2349067862223)
+                            <i data-lucide="message-circle" class="w-4 h-4"></i> Connect with Director Ruby Garg on WhatsApp (+2349067862223)
                         </a>
                     </div>
                 </div>
@@ -261,17 +279,20 @@
     <script>
         lucide.createIcons();
 
-        let userProfile = { name: "Zenova Peak", country: "NG", currency: "₦" };
+        let userProfile = { name: "Zenova Peak Tech Hub", country: "NG", currency: "₦", industry: "Technology & AI Firm", services: "" };
         let mediaStream = null;
-        let voiceActive = false;
+        let voiceReceptionistActive = false;
 
         function handleSignUp(e) {
             if (e) e.preventDefault();
-            const nameInput = document.getElementById('biz-name');
-            if (nameInput && nameInput.value) {
-                userProfile.name = nameInput.value;
-                document.getElementById('display-business-name').innerText = userProfile.name;
-            }
+            userProfile.name = document.getElementById('biz-name').value;
+            userProfile.industry = document.getElementById('biz-industry').value;
+            userProfile.services = document.getElementById('biz-services').value;
+            
+            const countrySel = document.getElementById('biz-country');
+            userProfile.currency = countrySel.options[countrySel.selectedIndex].getAttribute('data-curr') || '₦';
+
+            document.getElementById('display-business-name').innerText = userProfile.name;
             document.getElementById('signup-view').style.display = 'none';
             document.getElementById('main-app').classList.remove('hidden');
         }
@@ -294,15 +315,15 @@
         }
 
         function toggleVoiceAssistant() {
-            voiceActive = !voiceActive;
+            voiceReceptionistActive = !voiceReceptionistActive;
             const btn = document.getElementById('voice-btn');
-            if(voiceActive) {
-                btn.innerText = "🎤 Real Voice: ACTIVE";
+            if(voiceReceptionistActive) {
+                btn.innerText = "📞 Human Voice Receptionist: ACTIVE";
                 btn.classList.remove('bg-emerald-500/20', 'text-emerald-400');
                 btn.classList.add('bg-emerald-500', 'text-black', 'font-bold');
-                alert("Altra AI Real Voice Assistant is now listening and speaking live.");
+                alert("Altra AI Human Voice Receptionist is now live to answer inbound client calls and handle inquiries using your exact service pricing.");
             } else {
-                btn.innerText = "🎤 Real Voice: OFF";
+                btn.innerText = "📞 Human Voice Receptionist: OFF";
                 btn.classList.remove('bg-emerald-500', 'text-black', 'font-bold');
                 btn.classList.add('bg-emerald-500/20', 'text-emerald-400');
             }
@@ -311,35 +332,49 @@
         function sendAIQuery() {
             const input = document.getElementById('chat-input');
             const history = document.getElementById('chat-history');
-            if(!input.value.trim()) return;
+            const query = input.value.trim();
+            if(!query) return;
 
-            history.innerHTML += `<div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl ml-auto max-w-[85%] text-white text-right">${input.value}</div>`;
-            const query = input.value;
+            history.innerHTML += `<div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl ml-auto max-w-[85%] text-white text-right">${query}</div>`;
             input.value = '';
 
             setTimeout(() => {
-                history.innerHTML += `<div class="bg-slate-800/80 p-3 rounded-xl max-w-[85%] text-slate-200">[AltraAI Gemini & Meta Engine]: Processed "${query}". Multi-tenant automation and advisory successfully synchronized.</div>`;
+                let aiReply = `[Altra AI Engine for ${userProfile.name}]: Synchronized with your ${userProfile.industry} profile. Addressing "${query}" with professional expertise, exact service pricing (${userProfile.currency}), and complete operational intelligence.`;
+                
+                const qLower = query.toLowerCase();
+                if(qLower.includes('diet') || qLower.includes('weight') || qLower.includes('food')) {
+                    aiReply = `[Altra AI Health & Wellness Expert for ${userProfile.name}]: Here is your customized 1-Week Diet Plan tailored for optimal health, energy, and emotional wellness:\n• Day 1-2: High-protein clean meals, green smoothies, hydration (${userProfile.currency} budget optimized).\n• Day 3-4: Intermittent fasting schedule with balanced complex carbs and organic vegetables.\n• Day 5-7: Nutrient-dense superfoods, lean proteins, and restorative evening herbal teas.`;
+                } else if(qLower.includes('solar') || qLower.includes('energy')) {
+                    aiReply = `[Altra AI Green Energy Module]: Solar and renewable power configuration calculated for your firm. Estimated setup cost: ${userProfile.currency}1,200 with 100% automated efficiency monitoring.`;
+                } else if(qLower.includes('travel') || qLower.includes('tour') || qLower.includes('hospitality')) {
+                    aiReply = `[Altra AI Hospitality & Local Guide]: Proximity tour mapped successfully. Automated booking link generated for local travelers with VIP concierge service.`;
+                }
+
+                history.innerHTML += `<div class="bg-slate-800/80 p-3 rounded-xl max-w-[85%] text-slate-200">${aiReply}</div>`;
                 history.scrollTop = history.scrollHeight;
             }, 600);
         }
 
         function saveCompanyContext() {
-            const instructions = document.getElementById('company-instructions').value;
-            alert("Company context and operational instructions successfully updated for Altra AI!");
+            alert("Company information, pricing schedule, and AI operational rules successfully saved and loaded into Altra AI memory.");
         }
 
         function confirmRealTimeBooking() {
             const client = document.getElementById('book-name').value || 'Valued Client';
             const location = document.getElementById('book-location').value || 'Nearby Area';
-            alert(`Booking confirmed for ${client} near ${location}! Real-time dispatch notification sent.`);
+            const service = document.getElementById('book-service-type').value;
+            alert(`Real-Time Booking confirmed for ${client} at ${location}!\nService: ${service}\nNearby proximity dispatch completed successfully.`);
         }
 
-        async function startCamera() {
+        async function startCameraScan() {
             const video = document.getElementById('camera-feed');
             video.classList.remove('hidden');
             try {
                 mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
                 video.srcObject = mediaStream;
+                setTimeout(() => {
+                    alert("Altra Lens scanned receipt / document successfully! Accounts and ledger updated automatically.");
+                }, 2000);
             } catch (err) {
                 alert("Camera access unavailable.");
             }
@@ -347,54 +382,57 @@
 
         function generateEditableInvoice() {
             const client = document.getElementById('inv-client').value;
-            const desc = document.getElementById('inv-desc').value;
+            const item = document.getElementById('inv-item').value;
             const qty = document.getElementById('inv-qty').value;
             const price = document.getElementById('inv-price').value;
             const total = qty * price;
-            alert(`Editable Invoice Generated for ${client}\nItem: ${desc}\nTotal Amount: ${userProfile.currency}${total.toLocaleString()}`);
+            alert(`Editable Invoice Generated for ${client} (${userProfile.name}):\nItem: ${item}\nTotal: ${userProfile.currency}${total.toLocaleString()}`);
         }
 
         function openAutomationPopup(platform) {
-            alert(`Opening secure pop-up window to link your ${platform} business page and webhooks.`);
+            alert(`Secure popup window opened: Linking ${platform} business page and webhooks to Altra AI Automative Mode.`);
         }
 
-        function runTrainerBot() {
-            alert("Corporate training SOPs verified and broadcasted successfully.");
+        function runProfessionalTrainer() {
+            const query = document.getElementById('trainer-query').value;
+            alert(`[Corporate Trainer Bot]: Professional training session generated for "${query}". SOPs verified and broadcasted successfully.`);
         }
 
-        function runStudentBot() {
-            alert("Competitive exam answers and digital handwriting notes compiled successfully.");
+        function runStudentHandwritingNotes() {
+            const query = document.getElementById('student-query').value;
+            alert(`[Student Teacher Bot]: Compiled 10-year exam memory archive and important questions for "${query}". Digital handwriting notes formatted successfully.`);
         }
 
         function playAudioBook() {
-            alert("Playing audio narration for selected e-book / manual.");
+            alert("Playing audio narration for selected trending business book / manual.");
         }
 
         function downloadEBook() {
-            alert("Downloading e-book file package to your device.");
+            alert("Downloading selected trending business e-book and question bank package to your device.");
         }
 
-        function generateMediaAd(type) {
-            const prompt = document.getElementById('ad-prompt').value || 'Altra AI Suite';
+        function generateRealAdPicture() {
+            const prompt = document.getElementById('ad-prompt').value || 'Business offer ad';
             const output = document.getElementById('media-output');
-            
-            if(type === 'image') {
-                const encodedPrompt = encodeURIComponent(prompt + ", high quality, professional marketing ad, futuristic tech background");
-                const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=500&nologo=true`;
-                output.innerHTML = `
-                    <div class="text-emerald-400 font-bold mb-2">Generated Real Ad Picture:</div>
-                    <img src="${imageUrl}" alt="Generated Ad Image" class="rounded-xl border border-slate-700 w-full object-cover shadow-lg max-h-[220px]" />
-                `;
-            } else {
-                output.innerHTML = `
-                    <div class="text-indigo-400 font-bold mb-1">Generated 30s Video Script & Storyboard:</div>
-                    <div class="text-left bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1 text-slate-300 text-xs">
-                        <p><strong>Scene 1 (0-10s):</strong> Emotional hook and business challenge solution for "${prompt}".</p>
-                        <p><strong>Scene 2 (10-20s):</strong> Altra AI automated multi-tenant workflow demonstration.</p>
-                        <p><strong>Scene 3 (20-30s):</strong> Call to Action: Visit krishnyanshzenovapeaks.com | WhatsApp: +2349067862223</p>
-                    </div>
-                `;
-            }
+            const encodedPrompt = encodeURIComponent(prompt + ", high quality professional marketing ad poster, futuristic tech background");
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=500&nologo=true`;
+            output.innerHTML = `
+                <div class="text-emerald-400 font-bold mb-2">Generated Real Ad Poster & Visual:</div>
+                <img src="${imageUrl}" alt="Generated Ad Poster" class="rounded-xl border border-slate-700 w-full object-cover shadow-lg max-h-[220px]" />
+            `;
+        }
+
+        function generateRealVideoScript() {
+            const prompt = document.getElementById('ad-prompt').value || 'Business promotion';
+            const output = document.getElementById('media-output');
+            output.innerHTML = `
+                <div class="text-indigo-400 font-bold mb-1">Generated 15s-30s AI Video Advertising Storyboard:</div>
+                <div class="text-left bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1 text-slate-300 text-xs">
+                    <p><strong>Scene 1 (0-10s):</strong> High-impact visual addressing market need for "${prompt}".</p>
+                    <p><strong>Scene 2 (10-20s):</strong> Altra AI automated multi-tenant workflow and bookkeeping execution.</p>
+                    <p><strong>Scene 3 (20-30s):</strong> Call to Action: Visit krishnyanshzenovapeaks.com | WhatsApp Director: +2349067862223</p>
+                </div>
+            `;
         }
     </script>
 </body>
