@@ -33,8 +33,8 @@ app.post('/api/webhook', (req, res) => {
     res.status(200).send('EVENT_RECEIVED');
 });
 
-// Fallback route to serve index.html for any other request
-app.get('*', (req, res) => {
+// Fallback route using regex format to prevent path-to-regexp parsing errors
+app.get(/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
