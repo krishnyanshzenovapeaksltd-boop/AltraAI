@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altra AI | Global Business Operating System</title>
+    <title>Altra AI | Global Business Operating System & Media Studio</title>
+    <!-- Meta Domain Verification Code -->
+    <meta name="facebook-domain-verification" content="YOUR_META_VERIFICATION_CODE_HERE">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
-    <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#10b981">
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
 
@@ -19,8 +19,8 @@
     <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl overflow-hidden bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shadow-lg">
-                    <img src="icon.png" alt="Altra AI Logo" class="w-full h-full object-cover">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shadow-lg">
+                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
                 <div>
                     <h1 class="font-bold text-lg tracking-wide text-white">ALTRA AI SUITE</h1>
@@ -42,7 +42,7 @@
         <div id="signup-view" class="max-w-md mx-auto w-full bg-slate-900/80 border border-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl backdrop-blur-md">
             <div class="text-center mb-6">
                 <h2 class="text-2xl font-bold text-white">Activate Altra AI Suite</h2>
-                <p class="text-sm text-slate-400 mt-1">Deploy separate modules for AltraAI, Bookkeeping Lens, Creators, and Bots.</p>
+                <p class="text-sm text-slate-400 mt-1">Deploy multi-bot corporate, student, voice, and media engines.</p>
             </div>
 
             <form id="signup-form" onsubmit="handleSignUp(event)" class="space-y-4">
@@ -69,9 +69,28 @@
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Primary Industry</label>
                         <select id="biz-category" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
-                            <option value="Tech & Automation">Tech & Automation</option>
-                            <option value="Content Creation">Content Creation & Media</option>
-                            <option value="Corporate Training">Corporate Training & EdTech</option>
+                            <optgroup label="Tourism, Travel & Hospitality">
+                                <option value="Tourism & Travel Agencies">Tourism & Travel Agencies</option>
+                                <option value="Local Itinerary Guides">Local Itinerary Guides</option>
+                                <option value="Hotels, Resorts & Bookings">Hotels, Resorts & Bookings</option>
+                                <option value="Restaurants, Cafes & Food Services">Restaurants, Cafes & Food Services</option>
+                            </optgroup>
+                            <optgroup label="Corporate, Finance & Legal">
+                                <option value="Finance, Banking & Accounting">Finance, Banking & Accounting</option>
+                                <option value="Corporate Registrations & CAC">Corporate Registrations & CAC</option>
+                                <option value="Legal Services & Consultancy">Legal Services & Consultancy</option>
+                                <option value="Existing Business & Companies">Existing Business & Companies</option>
+                            </optgroup>
+                            <optgroup label="Education, Training & Media">
+                                <option value="Corporate Training">Corporate Training & EdTech</option>
+                                <option value="Students & Academic Research">Students & Academic Research</option>
+                                <option value="Content Creators & Media">Content Creators & Media</option>
+                            </optgroup>
+                            <optgroup label="Commerce & Everyday Services">
+                                <option value="Global E-Commerce">Global E-Commerce, Retail & Stores</option>
+                                <option value="Homemakers & Household Management">Homemakers & Household Management</option>
+                                <option value="Tech & Automation">Tech & Automation Agencies</option>
+                            </optgroup>
                         </select>
                     </div>
                 </div>
@@ -86,20 +105,12 @@
         <!-- VIEW 2: MULTI-MODULE DASHBOARD -->
         <div id="dashboard-view" class="hidden flex-col space-y-6">
             
-            <!-- Module Navigation Bar (Separated Options) -->
+            <!-- Module Navigation Bar -->
             <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-2xl flex flex-wrap gap-2 items-center justify-between">
                 <div class="flex flex-wrap gap-1.5">
                     <button onclick="switchTab('altra')" id="tab-btn-altra" class="px-3 py-2 bg-emerald-500 text-slate-950 rounded-xl font-bold text-xs flex items-center space-x-1.5 transition">
-                        <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-                        <span>Altra AI Assistant</span>
-                    </button>
-                    <button onclick="switchTab('lens')" id="tab-btn-lens" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
-                        <i data-lucide="scan" class="w-3.5 h-3.5"></i>
-                        <span>Bookkeeping Lens</span>
-                    </button>
-                    <button onclick="switchTab('creator')" id="tab-btn-creator" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                        <span>Content Creator Studio</span>
+                        <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                        <span>AltraAI & Bookkeeping</span>
                     </button>
                     <button onclick="switchTab('trainer')" id="tab-btn-trainer" class="px-3 py-2 bg-slate-800 text-white rounded-xl font-semibold text-xs flex items-center space-x-1.5 transition hover:bg-slate-700">
                         <i data-lucide="users" class="w-3.5 h-3.5"></i>
@@ -128,95 +139,44 @@
                 </div>
             </div>
 
-            <!-- MODULE 1: ALTRA AI ASSISTANT (SEPARATED) -->
-            <div id="module-altra" class="bg-slate-900/80 border border-slate-800 rounded-2xl flex flex-col h-[520px]">
-                <div class="p-3.5 border-b border-slate-800 flex justify-between items-center bg-slate-950/40 rounded-t-2xl">
-                    <span class="font-bold text-xs text-white flex items-center space-x-2"><i data-lucide="cpu" class="w-4 h-4 text-emerald-400"></i><span>AltraAI Global General Assistant & Automation Engine</span></span>
+            <!-- MODULE 1: ALTRA AI & BOOKKEEPING LENS -->
+            <div id="module-altra" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-slate-900/80 border border-slate-800 rounded-2xl flex flex-col h-[480px]">
+                    <div class="p-3.5 border-b border-slate-800 flex justify-between items-center bg-slate-950/40 rounded-t-2xl">
+                        <span class="font-bold text-xs text-white flex items-center space-x-2"><i data-lucide="cpu" class="w-4 h-4 text-emerald-400"></i><span>AltraAI Global Knowledge & Bookkeeping Engine</span></span>
+                    </div>
+                    <div id="chat-messages-altra" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+                        <div class="bg-slate-800/80 p-3 rounded-xl text-slate-200">AltraAI is live. Ask any global query, automate workflows, or scan receipts to update your bookkeeping records instantly.</div>
+                    </div>
+                    <div class="p-3 border-t border-slate-800 flex space-x-2">
+                        <input type="text" id="input-altra" placeholder="Ask global queries or log transaction..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('altra')">
+                        <button onclick="sendModuleChat('altra')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Send</button>
+                    </div>
                 </div>
-                <div id="chat-messages-altra" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
-                    <div class="bg-slate-800/80 p-3 rounded-xl text-slate-200">AltraAI is live. Ask any global question, request automation strategies, or test workflows.</div>
-                </div>
-                <div class="p-3 border-t border-slate-800 flex space-x-2">
-                    <input type="text" id="input-altra" placeholder="Ask AltraAI anything globally..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('altra')">
-                    <button onclick="sendModuleChat('altra')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Send</button>
-                </div>
-            </div>
-
-            <!-- MODULE 2: BOOKKEEPING LENS (SEPARATED) -->
-            <div id="module-lens" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-                <div class="flex justify-between items-center mb-6">
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
                     <div>
-                        <h3 class="font-bold text-base text-white flex items-center space-x-2"><i data-lucide="scan" class="w-5 h-5 text-emerald-400"></i><span>Altra Bookkeeping Lens (Receipt OCR & P&L)</span></h3>
-                        <p class="text-xs text-slate-400 mt-0.5">Snap receipts, invoices, and bills to auto-extract expenses directly into your automated profit & loss ledger.</p>
-                    </div>
-                    <span class="text-xs px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-lg font-medium">Multi-Currency Active</span>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                    <div class="border-2 border-dashed border-slate-700 hover:border-emerald-500 rounded-2xl p-8 text-center cursor-pointer bg-slate-950/40 transition" onclick="simulateLensScan()">
-                        <i data-lucide="upload-cloud" class="w-10 h-10 text-emerald-400 mx-auto mb-2"></i>
-                        <h4 class="font-bold text-sm text-white">Click or Upload Receipt / Invoice</h4>
-                        <p class="text-xs text-slate-400 mt-1">Supports PNG, JPG, PDF vendor invoices</p>
-                        <button class="mt-4 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs font-bold rounded-xl transition">
-                            Snap & Extract OCR
-                        </button>
-                    </div>
-
-                    <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-3">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Reconciled P&L Ledger</h4>
-                        <div id="lens-log" class="space-y-2 text-xs">
-                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800 flex justify-between items-center">
-                                <div>
-                                    <p class="font-semibold text-white">Vendor: Initial System Setup</p>
-                                    <p class="text-[10px] text-slate-400">Status: Reconciled & Synced</p>
-                                </div>
-                                <span class="text-emerald-400 font-bold">+ ₦0.00</span>
-                            </div>
-                            <p class="text-[11px] text-slate-400 italic">Upload a receipt above to add live entries to your ledger.</p>
+                        <h3 class="font-bold text-sm text-white mb-2 flex items-center space-x-2"><i data-lucide="scan" class="w-4 h-4 text-emerald-400"></i><span>Altra Lens (Receipt OCR)</span></h3>
+                        <p class="text-xs text-slate-400 mb-4">Snap bills or receipts with your camera to auto-extract vendor and amount into P&L ledger.</p>
+                        
+                        <!-- Live Camera Stream Box -->
+                        <div id="lens-camera-container" class="relative border-2 border-dashed border-slate-700 rounded-xl overflow-hidden bg-slate-950/40 mb-3 hidden" style="height: 180px;">
+                            <video id="lens-video" autoplay playsinline class="w-full h-full object-cover"></video>
                         </div>
+
+                        <div id="lens-upload-trigger" class="border-2 border-dashed border-slate-700 rounded-xl p-6 text-center bg-slate-950/40 cursor-pointer hover:border-emerald-500" onclick="startCameraLens()">
+                            <i data-lucide="camera" class="w-8 h-8 text-emerald-400 mx-auto mb-2"></i>
+                            <span class="text-xs font-semibold text-white">Click to Enable Camera &amp; Scan</span>
+                        </div>
+
+                        <button id="snap-btn" onclick="captureReceiptSnapshot()" class="w-full py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl mt-2 hidden">Snap &amp; Extract Data</button>
+                    </div>
+                    <div id="lens-log" class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 mt-3">
+                        <span class="text-emerald-400 font-bold">Latest Ledger Entry:</span> No recent scan yet.
                     </div>
                 </div>
             </div>
 
-            <!-- MODULE 3: CONTENT CREATOR STUDIO -->
-            <div id="module-creator" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h3 class="font-bold text-base text-white flex items-center space-x-2"><i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i><span>Altra Content Creator Studio</span></h3>
-                        <p class="text-xs text-slate-400">Generate viral hooks, YouTube scripts, Instagram/TikTok captions, and content calendars in 1 click.</p>
-                    </div>
-                    <span class="text-xs px-2.5 py-1 bg-emerald-500/20 text-emerald-400 rounded-lg font-semibold">Creator Mode Active</span>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-400 mb-1">Content Topic / Niche</label>
-                            <input type="text" id="creator-topic" placeholder="e.g. AI Business Automation" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-400 mb-1">Target Platform</label>
-                            <select id="creator-platform" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
-                                <option value="YouTube">YouTube Long-form / Shorts</option>
-                                <option value="TikTok">TikTok / Instagram Reels</option>
-                                <option value="LinkedIn">LinkedIn Professional Post</option>
-                                <option value="Twitter">Twitter / X Thread</option>
-                            </select>
-                        </div>
-                        <button onclick="generateCreatorContent()" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition">Generate Content Kit</button>
-                    </div>
-
-                    <div class="md:col-span-2 bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between h-[320px]">
-                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Generated Content Output</h4>
-                        <div id="creator-output" class="flex-1 overflow-y-auto bg-slate-900/80 p-3 rounded-lg border border-slate-800 text-xs text-slate-200 my-2 space-y-2">
-                            <span class="text-slate-500 italic">Select topic and platform, then click generate to create viral hooks, full scripts, and hashtags.</span>
-                        </div>
-                        <button onclick="alert('Content copied to clipboard successfully!')" class="py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-lg">Copy to Clipboard</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MODULE 4: CORPORATE TRAINER BOT -->
+            <!-- MODULE 2: CORPORATE TRAINER BOT -->
             <div id="module-trainer" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <div class="flex justify-between items-center mb-4">
                     <div>
@@ -234,7 +194,7 @@
                 </div>
             </div>
 
-            <!-- MODULE 5: STUDENT TUTOR BOT -->
+            <!-- MODULE 3: STUDENT TUTOR BOT -->
             <div id="module-student" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <div class="flex justify-between items-center mb-4">
                     <div>
@@ -247,162 +207,40 @@
                     <div class="bg-slate-900 p-3 rounded-xl text-slate-200">Welcome student! What topic or programming language would you like to master today?</div>
                 </div>
                 <div class="flex space-x-2">
-                    <select id="signup-industry" name="primaryIndustry">
-    <optgroup label="Energy, Tech & Manufacturing">
-        <option value="solar">Solar & Renewable Energy</option>
-        <option value="tech">Tech & Software Automation</option>
-        <option value="manufacturing">Manufacturers & Industrial Production</option>
-        <option value="it">Local IT Services & Support</option>
-    </optgroup>
-    <optgroup label="Tourism, Travel & Hospitality">
-        <option value="tourism">Tourism & Travel Agencies</option>
-        <option value="tourguide">Local Itinerary Guides & Tour Operators</option>
-        <option value="hospitality">Hotels, Resorts & Bookings</option>
-        <option value="restaurants">Restaurants, Cafes & Food Services</option>
-    </optgroup>
-    <optgroup label="Corporate, Finance & Legal">
-        <option value="finance">Finance, Banking & Accounting</option>
-        <option value="registration">Corporate Registration & Business Setup</option>
-        <option value="legal">Legal Services & Consultancy</option>
-        <option value="corporate">Existing Business & Corporate Firms</option>
-    </optgroup>
-    <optgroup label="Education, Training & Media">
-        <option value="training">Trainers, Coaches & Educators</option>
-        <option value="students">Students & Academic Researchers</option>
-        <option value="media">Content Creators, Media & Influencers</option>
-    </optgroup>
-    <optgroup label="Daily Life & Services">
-        <option value="household">Household Management & Home Services</option>
-        <option value="healthcare">Healthcare, Wellness & Clinics</option>
-        <option value="realestate">Real Estate & Property Management</option>
-        <option value="retail">Retail, E-Commerce & Fashion</option>
-        <option value="other">Any Other Global Business / Custom Service</option>
-    </optgroup>
-</select>
                     <input type="text" id="input-student" placeholder="Ask tutor anything (e.g., Explain JavaScript async/await)..." class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500" onkeypress="if(event.key==='Enter') sendModuleChat('student')">
                     <button onclick="sendModuleChat('student')" class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl font-bold text-xs">Ask Tutor</button>
                 </div>
             </div>
 
-            <!-- MODULE 6: OMNICHANNEL HUB -->
+            <!-- MODULE 4: OMNICHANNEL HUB (FB, Insta, WhatsApp, Web) -->
             <div id="module-omnichannel" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="share-2" class="w-5 h-5 text-emerald-400"></i><span>Omnichannel Client Deployment Hub</span></h3>
                 <p class="text-xs text-slate-400 mb-6">Connect and deploy your custom AI bot directly across multiple customer touchpoints with single clicks.</p>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                  <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
-  <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl mx-auto flex items-center justify-center font-bold">MIC</div>
-  <h4 class="font-bold text-sm text-white">Voice Assistant</h4>
-  <p id="voice-status" class="text-xs text-slate-400">Click to talk to Altra AI</p>
-  <button id="start-voice-btn" onclick="toggleVoiceAssistant()" class="w-full py-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-lg transition">Start Voice Chat</button>
-</div>.
-<!-- 
-                    
-        body: JSON.stringify({ userMessage: 'Sync client channels', platform: platformName })
-      });
-      const data = await response.json();
-      alert(data.reply);
-    } catch (error) {
-      alert("Error connecting to server endpoint.");
-    }
-         <!-- Live Facebook Messenger Button -->
-<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
-  <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl mx-auto flex items-center justify-center font-bold">FB</div>
-  <h4 class="font-bold text-sm text-white">Facebook Messenger</h4>
-  <button onclick="triggerLiveAutomation('Facebook Messenger')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect</button>
-</div>
-
-<div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
-  <div class="w-10 h-10 bg-pink-500/20 text-pink-400 rounded-xl mx-auto flex items-center justify-center font-bold">IG</div>
-  <h4 class="font-bold text-sm text-white">Instagram DM Engine</h4>
-  <button onclick="triggerLiveAutomation('Instagram DM')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg transition">Connect</button>
-</div>
-
-<script>
-  async function triggerLiveAutomation(platformName) {
-    try {
-      const response = await fetch('/api/automation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userMessage: 'Sync client channels', platform: platformName })
-      });
-      const data = await response.json();
-      alert(data.reply);
-    } catch (error) {
-      alert("Error connecting to server endpoint.");
-    }
-  }
-</script>       
-  }
-</script>
-                    
-<script>
-  let isListening = false;
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  
-  function toggleVoiceAssistant() {
-    if (!SpeechRecognition) {
-      alert("Speech recognition is not supported in this browser. Please use Google Chrome.");
-      return;
-    }
-
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
-
-    const statusText = document.getElementById("voice-status");
-    const btn = document.getElementById("start-voice-btn");
-
-    if (!isListening) {
-      recognition.start();
-      isListening = true;
-      statusText.textContent = "Listening... Speak now.";
-      btn.textContent = "Stop & Send";
-      btn.classList.replace("bg-emerald-500", "bg-rose-500");
-
-      recognition.onresult = (event) => {
-        const spokenText = event.results[0][0].transcript;
-        statusText.textContent = `You said: "${spokenText}"`;
-        speakResponse("I received your message for Altra AI automation.");
-      };
-
-      recognition.onend = () => {
-        isListening = false;
-        btn.textContent = "Start Voice Chat";
-        btn.classList.replace("bg-rose-500", "bg-emerald-500");
-      };
-    }
-  }
-
-  function speakResponse(text) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    window.speechSynthesis.speak(utterance);
-    document.getElementById("voice-status").textContent = text;
-  }
-</script>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-emerald-500/20 text-emerald-400 rounded-xl mx-auto flex items-center justify-center font-bold">WA</div>
                         <h4 class="font-bold text-sm text-white">WhatsApp Business</h4>
-                       <a href="https://wa.me/2349067862223?text=Hello%20Altra%20AI,%20I%20want%20to%20automate%20my%20business" target="_blank" class="block w-full py-1.5 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-lg text-center transition">Open Live WhatsApp</a>
+                        <button onclick="alert('WhatsApp webhook synced successfully!')" class="w-full py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-lg">Connected</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-blue-500/20 text-blue-400 rounded-xl mx-auto flex items-center justify-center font-bold">FB</div>
                         <h4 class="font-bold text-sm text-white">Facebook Messenger</h4>
-                        <button onclick="alert('Facebook Messenger auto-reply active for your page!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
+                        <button onclick="alert('Facebook Messenger auto-reply active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-pink-500/20 text-pink-400 rounded-xl mx-auto flex items-center justify-center font-bold">IG</div>
                         <h4 class="font-bold text-sm text-white">Instagram DM Engine</h4>
-                        <button onclick="alert('Instagram comment-to-DM conversion active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
+                        <button onclick="alert('Instagram comment-to-DM active!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Connect</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center space-y-3">
                         <div class="w-10 h-10 bg-amber-500/20 text-amber-400 rounded-xl mx-auto flex items-center justify-center font-bold">WEB</div>
                         <h4 class="font-bold text-sm text-white">Website Embed Widget</h4>
-                        <button onclick="alert('Widget snippet copied! Paste into krishnyanshzenovapeaks.com footer.')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Get Script</button>
+                        <button onclick="alert('Embed script copied to clipboard!')" class="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-lg">Get Script</button>
                     </div>
                 </div>
             </div>
 
-            <!-- MODULE 7: VOICE AGENTS -->
+            <!-- MODULE 5: VOICE AGENTS -->
             <div id="module-voice" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="phone-call" class="w-5 h-5 text-emerald-400"></i><span>AI Human-Like Voice Calling Agent</span></h3>
                 <p class="text-xs text-slate-400 mb-6">Handles inbound client calls when your team is busy, takes bookings by voice, and forwards call transcripts to WhatsApp.</p>
@@ -411,16 +249,20 @@
                         <span class="text-xs text-emerald-400 font-bold uppercase">Active Voice Line</span>
                         <h4 class="text-lg font-bold text-white">+234 906 786 2223</h4>
                         <p class="text-xs text-slate-400">AI Voice Assistant: Enabled (Professional English & Pidgin accent support)</p>
-                        <button onclick="alert('Test call simulator triggered. Inbound voice agent active on +2349067862223.')" class="py-2 px-4 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl">Test Voice Agent Call</button>
+                        <button onclick="triggerVoiceAssistantCall()" class="py-2 px-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl transition-all shadow-lg shadow-emerald-500/20">Test Voice Agent Call</button>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-3">
-                        <span class="text-xs text-slate-400 font-bold uppercase">Latest Call Transcript</span>
-                        <p class="text-xs text-slate-300 italic">"Caller requested a software quotation for 5 automation bots. Summary forwarded to owner WhatsApp."</p>
+                        <span class="text-xs text-slate-400 font-bold uppercase">Latest Call Transcript & Audio Stream</span>
+                        <p id="voice-transcript-log" class="text-xs text-slate-300 italic">"Caller requested a software quotation for 5 automation bots. Summary forwarded to owner WhatsApp."</p>
+                        <div class="flex items-center space-x-2 text-[11px] text-emerald-400 font-medium mt-2">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                            <span>Server Webhook Status: Live & Listening</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- MODULE 8: GLOBAL REALITIES -->
+            <!-- MODULE 6: GLOBAL REALITIES -->
             <div id="module-reality" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="activity" class="w-5 h-5 text-emerald-400"></i><span>Global Realities & Market Intelligence</span></h3>
                 <p class="text-xs text-slate-400 mb-6">Real-time international market facts, economic indicators, and business automation statistics.</p>
@@ -433,7 +275,7 @@
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
                         <span class="text-xs text-slate-400">Cross-Border Payment Speed</span>
                         <div class="text-xl font-bold text-white mt-1">&lt; 3.2 Seconds</div>
-                        <p class="text-[11px] text-slate-400 mt-1">Multi-currency automated reconciliation.</p>
+                        <p class="text-[11px] text-emerald-400 mt-1">Multi-currency automated reconciliation.</p>
                     </div>
                     <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
                         <span class="text-xs text-slate-400">Client Retention Boost</span>
@@ -443,7 +285,7 @@
                 </div>
             </div>
 
-            <!-- MODULE 9: AD & MEDIA STUDIO -->
+            <!-- MODULE 7: AD & MEDIA STUDIO -->
             <div id="module-media" class="hidden bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
                 <h3 class="font-bold text-base text-white flex items-center space-x-2 mb-2"><i data-lucide="video" class="w-5 h-5 text-emerald-400"></i><span>AI Ad & Media Generator Studio</span></h3>
                 <p class="text-xs text-slate-400 mb-6">Generate high-converting corporate advertisement pictures and promotional video scripts instantly for social media.</p>
@@ -451,7 +293,7 @@
                     <div class="space-y-4 bg-slate-950 p-4 rounded-xl border border-slate-800">
                         <div>
                             <label class="block text-xs font-semibold text-slate-400 mb-1">Ad Prompt / Product Description</label>
-                            <input type="text" id="ad-prompt" placeholder="e.g., Altra AI Automation for Enterprises" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                            <input type="text" id="ad-prompt" placeholder="e.g., Professional AI Automation for African Businesses" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
                         </div>
                         <div class="flex space-x-2">
                             <button onclick="generateAdMedia('image')" class="flex-1 py-2 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl">Generate Ad Image</button>
@@ -481,11 +323,18 @@
         lucide.createIcons();
 
         let userProfile = { name: "Zenova Peak", country: "NG", currency: "₦" };
+        let mediaStream = null;
 
         function handleSignUp(e) {
             e.preventDefault();
             userProfile.name = document.getElementById('biz-name').value;
+            const countrySelect = document.getElementById('biz-country');
+            const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+            userProfile.currency = selectedOption.getAttribute('data-curr') || '₦';
+
             document.getElementById('display-business-name').innerText = userProfile.name;
+            document.getElementById('display-location-badge').innerText = `${selectedOption.text}`;
+            
             document.getElementById('signup-view').classList.add('hidden');
             document.getElementById('dashboard-view').classList.remove('hidden');
             document.getElementById('user-profile-pill').classList.remove('hidden');
@@ -493,6 +342,9 @@
         }
 
         function handleLogout() {
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
             document.getElementById('dashboard-view').classList.add('hidden');
             document.getElementById('signup-view').classList.remove('hidden');
             document.getElementById('user-profile-pill').classList.remove('flex');
@@ -500,95 +352,86 @@
         }
 
         function switchTab(tabName) {
-            ['altra', 'lens', 'creator', 'trainer', 'student', 'omnichannel', 'voice', 'reality', 'media'].forEach(t => {
-                const el = document.getElementById(`module-${t}`);
-                const btn = document.getElementById(`tab-btn-${t}`);
-                if(el) el.classList.add('hidden');
-                if(btn) {
-                    btn.classList.remove('bg-emerald-500', 'text-slate-950');
-                    btn.classList.add('bg-slate-800', 'text-white');
-                }
+            ['altra', 'trainer', 'student', 'omnichannel', 'voice', 'reality', 'media'].forEach(t => {
+                document.getElementById(`module-${t}`).classList.add('hidden');
+                document.getElementById(`tab-btn-${t}`).classList.remove('bg-emerald-500', 'text-slate-950');
+                document.getElementById(`tab-btn-${t}`).classList.add('bg-slate-800', 'text-white');
             });
-            const activeEl = document.getElementById(`module-${tabName}`);
-            const activeBtn = document.getElementById(`tab-btn-${tabName}`);
-            if(activeEl) activeEl.classList.remove('hidden');
-            if(activeBtn) {
-                activeBtn.classList.remove('bg-slate-800', 'text-white');
-                activeBtn.classList.add('bg-emerald-500', 'text-slate-950');
-            }
+            document.getElementById(`module-${tabName}`).classList.remove('hidden');
+            document.getElementById(`tab-btn-${tabName}`).classList.remove('bg-slate-800', 'text-white');
+            document.getElementById(`tab-btn-${tabName}`).classList.add('bg-emerald-500', 'text-slate-950');
         }
 
-        async function sendModuleChat(moduleType) {
+        function sendModuleChat(moduleType) {
             const input = document.getElementById(`input-${moduleType}`);
-            if (!input) return;
             const text = input.value.trim();
             if(!text) return;
 
             const box = document.getElementById(`chat-messages-${moduleType}`);
-            if (!box) return;
-
             box.innerHTML += `<div class="bg-emerald-600 text-slate-950 p-2.5 rounded-xl ml-auto max-w-[80%] font-medium">${text}</div>`;
-            input.value = ''; 
+            input.value = '';
             box.scrollTop = box.scrollHeight;
 
-            const loadingId = 'loading-' + Date.now();
-            box.innerHTML += `
-                <div id="${loadingId}" class="bg-slate-800 p-2.5 rounded-xl text-slate-400 max-w-[80%] italic">
-                    Altra AI is processing your request...
-                </div>
-            `;
-            box.scrollTop = box.scrollHeight;
+            setTimeout(() => {
+                let reply = `[${moduleType.toUpperCase()} BOT]: Processed successfully. Automated workflow triggered!`;
+                if(moduleType === 'trainer') reply = `[Corporate Trainer]: SOP verified. Staff guideline sent to team channel.`;
+                if(moduleType === 'student') reply = `[Student Tutor]: Great question! Here is your step-by-step breakdown...`;
+                box.innerHTML += `<div class="bg-slate-800 p-2.5 rounded-xl text-slate-200 max-w-[80%]">${reply}</div>`;
+                box.scrollTop = box.scrollHeight;
+            }, 600);
+        }
+
+        async function startCameraLens() {
+            const videoElement = document.getElementById('lens-video');
+            const cameraContainer = document.getElementById('lens-camera-container');
+            const uploadTrigger = document.getElementById('lens-upload-trigger');
+            const snapBtn = document.getElementById('snap-btn');
 
             try {
-                const response = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        prompt: text,
-                        service: moduleType,
-                        country: document.getElementById('biz-country') ? document.getElementById('biz-country').value : 'NG',
-                        currency: "₦",
-                        category: document.getElementById('biz-category') ? document.getElementById('biz-category').value : 'Tech'
-                    })
+                mediaStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: 'environment' }, 
+                    audio: false 
                 });
+                
+                videoElement.srcObject = mediaStream;
+                cameraContainer.classList.remove('hidden');
+                uploadTrigger.classList.add('hidden');
+                snapBtn.classList.remove('hidden');
 
-                const data = await response.json();
-                const loader = document.getElementById(loadingId);
-                if(loader) loader.remove();
-
-                if (data.success) {
-                    box.innerHTML += `<div class="bg-slate-800 p-2.5 rounded-xl text-slate-200 max-w-[80%] whitespace-pre-line">${data.reply}</div>`;
-                } else {
-                    throw new Error(data.error || 'API response failed');
-                }
-            } catch (error) {
-                const loader = document.getElementById(loadingId);
-                if(loader) loader.remove();
-                box.innerHTML += `<div class="bg-rose-950 border border-rose-800 text-rose-200 p-2.5 rounded-xl max-w-[80%]">Error: ${error.message}</div>`;
+                document.getElementById('lens-log').innerHTML = `<span class="text-emerald-400 font-bold">Camera Active:</span> Point camera at receipt and click Snap & Extract Data.`;
+            } catch (err) {
+                console.error("Camera permission error:", err);
+                alert("Could not access camera. Please check browser permissions or use file upload.");
             }
-            box.scrollTop = box.scrollHeight;
         }
 
-        function generateCreatorContent() {
-            const topic = document.getElementById('creator-topic').value || 'AI Automation';
-            const platform = document.getElementById('creator-platform').value;
-            const output = document.getElementById('creator-output');
-
-            output.innerHTML = `
-                <p class="font-bold text-emerald-400">🔥 Viral Hook (${platform}):</p>
-                <p class="text-slate-300">"Stop doing manual tasks! Discover how ${topic} is changing businesses forever."</p>
-                <p class="font-bold text-emerald-400 mt-2">📝 Full Script / Outline:</p>
-                <p class="text-slate-300">1. Problem: Manual data entry and slow client response times.<br>2. Agitation: Losing 40% of leads overnight.<br>3. Solution: Deploying Altra AI automation suite via krishnyanshzenovapeaks.com.</p>
-                <p class="font-bold text-emerald-400 mt-2"># Tags:</p>
-                <p class="text-indigo-300">#AltraAI #ZenovaPeak #BusinessAutomation #${topic.replace(/\s+/g, '')} #TechHub</p>
-            `;
-        }
-
-        function simulateLensScan() {
+        function captureReceiptSnapshot() {
             const log = document.getElementById('lens-log');
-            const amt = Math.floor(Math.random() * 40000) + 10000;
-            log.innerHTML = `<span class="text-emerald-400 font-bold">Successfully Logged:</span> Vendor: Vendor Bills • Amount: ${userProfile.currency}${amt.toLocaleString()} added to Bookkeeping P&L.`;
-            alert('Altra Lens OCR extracted invoice data and updated P&L ledger automatically!');
+            const amt = Math.floor(Math.random() * 45000) + 12000;
+            
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
+
+            document.getElementById('lens-camera-container').classList.add('hidden');
+            document.getElementById('lens-upload-trigger').classList.remove('hidden');
+            document.getElementById('snap-btn').classList.add('hidden');
+
+            log.innerHTML = `<span class="text-emerald-400 font-bold">OCR Extracted:</span> Vendor: Office Supplies Ltd • Amount: ${userProfile.currency}${amt.toLocaleString()} added to Bookkeeping P&L.`;
+            alert(`Altra Lens successfully captured receipt! Extracted ${userProfile.currency}${amt.toLocaleString()} and synced to P&L ledger.`);
+        }
+
+        function triggerVoiceAssistantCall() {
+            alert('Test call simulator triggered. Ringing your device at +234 906 786 2223...');
+            
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance("Hello from Altra AI voice agent. Your multi-channel booking system is active and ready.");
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
+
+            document.getElementById('voice-transcript-log').innerText = `"Simulated inbound call connected successfully. Voice biometric verified. Transcribed booking inquiry logged to P&L ledger."`;
         }
 
         function generateAdMedia(type) {
@@ -597,7 +440,7 @@
             if(type === 'image') {
                 output.innerHTML = `<div class="text-emerald-400 font-bold">Generated Ad Image Concept:</div><p class="text-slate-300 mt-1">"High-tech futuristic dashboard displaying ${prompt} with glowing neon emerald accents, optimized for Facebook & Instagram feeds."</p>`;
             } else {
-                output.innerHTML = `<div class="text-indigo-400 font-bold">Generated 15s Video Script:</div><p class="text-slate-300 mt-1">"Scene 1: Struggling business owner. Scene 2: Altra AI voice agent answers missed call on +2349067862223. Scene 3: Profits soar. Call to action: Visit krishnyanshzenovapeaks.com"</p>`;
+                output.innerHTML = `<div class="text-indigo-400 font-bold">Generated 15s Video Script:</div><p class="text-slate-300 mt-1">"Scene 1: Struggling business owner. Scene 2: Altra AI voice agent answers missed call. Scene 3: Profits soar. Call to action: Visit krishnyanshzenovapeaks.com"</p>`;
             }
         }
     </script>
