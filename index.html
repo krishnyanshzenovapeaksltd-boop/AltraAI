@@ -519,6 +519,20 @@
                 `;
             }
         }
+        let userProfile = { name: "Zenova Peak", country: "NG", currency: "₦" };
+        let mediaStream = null;
+
+        function handleSignUp(e) {
+            e.preventDefault();
+            userProfile.name = document.getElementById('biz-name').value;
+            const countrySelect = document.getElementById('biz-country');
+            const selectedOption = countrySelect.options[countrySelect.selectedIndex];
+            userProfile.currency = selectedOption.getAttribute('data-curr') || '₦';
+            
+            // Hide login overlay and show main application suite
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
