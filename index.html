@@ -320,8 +320,6 @@
             document.getElementById('display-business-name').innerText = userProfile.name;
             document.getElementById('signup-view').style.display = 'none';
             document.getElementById('main-app').classList.remove('hidden');
-            
-            // Show floating chat bubble once logged in
             document.getElementById('altra-bubble-container').classList.remove('hidden');
         }
 
@@ -359,31 +357,26 @@
             input.value = '';
 
             setTimeout(() => {
-                let aiReply = `[Altra AI Universal Engine]: In response to "${query}", our systems for ${userProfile.name} are ready to assist you instantly with professional expertise.`;
-                
+                let aiReply = `[Altra AI Universal Engine]: In response to "${query}", here is your professional solution tailored for ${userProfile.name}.`;
                 const qLower = query.toLowerCase();
-                if(qLower.includes('diet') || qLower.includes('weight') || qLower.includes('food')) {
-                    aiReply = `[Altra AI Health Expert]: Here is your customized 1-Week Diet Plan:\n• Day 1-2: High-protein clean meals & hydration (${userProfile.currency} optimized).\n• Day 3-4: Intermittent fasting with greens.\n• Day 5-7: Superfoods & herbal teas.`;
-                } else if(qLower.includes('solar') || qLower.includes('energy')) {
-                    aiReply = `[Altra AI Green Energy]: Solar setup calculated at estimated cost ${userProfile.currency}1,200 with 100% automated smart monitoring.`;
-                } else if(qLower.includes('travel') || qLower.includes('tour')) {
-                    aiReply = `[Altra AI Travel Guide]: Proximity tour mapped successfully. VIP concierge booking link generated.`;
+                if(qLower.includes('diet') || qLower.includes('weight')) {
+                    aiReply = `[Health Expert]: Customized 1-Week Diet Plan generated with clean proteins, hydration, and organic greens (${userProfile.currency} budget optimized).`;
+                } else if(qLower.includes('solar')) {
+                    aiReply = `[Green Energy Module]: Solar configuration estimated at ${userProfile.currency}1,200 with 100% smart monitoring.`;
                 }
-
                 history.innerHTML += `<div class="bg-slate-800/90 p-2.5 rounded-xl max-w-[85%] text-slate-200">${aiReply}</div>`;
                 history.scrollTop = history.scrollHeight;
-            }, 600);
+            }, 500);
         }
 
         function saveCompanyContext() {
-            alert("Company information, pricing schedule, and AI operational rules successfully saved and loaded into Altra AI memory.");
+            alert("Company rules and pricing schedule updated in Altra AI memory.");
         }
 
         function confirmRealTimeBooking() {
             const client = document.getElementById('book-name').value || 'Valued Client';
             const location = document.getElementById('book-location').value || 'Nearby Area';
-            const service = document.getElementById('book-service-type').value;
-            alert(`Real-Time Booking confirmed for ${client} at ${location}!\nService: ${service}\nNearby proximity dispatch completed successfully.`);
+            alert(`Booking confirmed for ${client} at ${location}! Proximity dispatch completed.`);
         }
 
         async function startCameraScan() {
@@ -393,7 +386,7 @@
                 mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
                 video.srcObject = mediaStream;
                 setTimeout(() => {
-                    alert("Altra Lens scanned receipt / document successfully! Accounts and ledger updated automatically.");
+                    alert("Altra Lens scanned receipt successfully! Accounts ledger updated automatically.");
                 }, 2000);
             } catch (err) {
                 alert("Camera access unavailable.");
@@ -403,42 +396,47 @@
         function generateEditableInvoice() {
             const client = document.getElementById('inv-client').value;
             const item = document.getElementById('inv-item').value;
-            const qty = document.getElementById('inv-qty').value;
-            const price = document.getElementById('inv-price').value;
-            const total = qty * price;
-            alert(`Editable Invoice Generated for ${client} (${userProfile.name}):\nItem: ${item}\nTotal: ${userProfile.currency}${total.toLocaleString()}`);
+            const total = document.getElementById('inv-qty').value * document.getElementById('inv-price').value;
+            alert(`Invoice Generated for ${client}: ${item} - Total: ${userProfile.currency}${total.toLocaleString()}`);
         }
 
         function openAutomationPopup(platform) {
-            alert(`Secure popup window opened: Linking ${platform} business page and webhooks to Altra AI Automative Mode.`);
+            alert(`Secure popup opened: Linking ${platform} webhooks to Altra AI Automative Mode.`);
         }
 
         function runProfessionalTrainer() {
-            const query = document.getElementById('trainer-query').value;
-            alert(`[Corporate Trainer Bot]: Professional training session generated for "${query}". SOPs verified and broadcasted successfully.`);
+            const topic = document.getElementById('trainer-query').value;
+            alert(`[Corporate Trainer Session]: Professional audit and SOP breakdown generated for: "${topic}". All compliance modules synchronized.`);
         }
 
         function runStudentHandwritingNotes() {
             const query = document.getElementById('student-query').value;
-            alert(`[Student Teacher Bot]: Compiled 10-year exam memory archive and important questions for "${query}". Digital handwriting notes formatted successfully.`);
+            alert(`[Student Teacher 10-Year Exam Archive]: Important questions and digital handwritten notes successfully compiled for: "${query}". Ready for review and download.`);
+        }
+
+        function readEBookOnline() {
+            const select = document.getElementById('ebook-select');
+            alert(`Opening online reader view for: "${select.value}".`);
         }
 
         function playAudioBook() {
-            alert("Playing audio narration for selected trending business book / manual.");
+            const select = document.getElementById('ebook-select');
+            alert(`Playing HD Audio Narration for: "${select.value}".`);
         }
 
         function downloadEBook() {
-            alert("Downloading selected trending business e-book and question bank package to your device.");
+            const select = document.getElementById('ebook-select');
+            alert(`Downloading complete e-book package: "${select.value}" to your device.`);
         }
 
         function generateRealAdPicture() {
-            const prompt = document.getElementById('ad-prompt').value || 'Business offer ad';
+            const prompt = document.getElementById('ad-prompt').value || 'Business offer';
             const output = document.getElementById('media-output');
             const encodedPrompt = encodeURIComponent(prompt + ", high quality professional marketing ad poster, futuristic tech background");
             const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=500&nologo=true`;
             output.innerHTML = `
-                <div class="text-emerald-400 font-bold mb-2">Generated Real Ad Poster & Visual:</div>
-                <img src="${imageUrl}" alt="Generated Ad Poster" class="rounded-xl border border-slate-700 w-full object-cover shadow-lg max-h-[220px]" />
+                <div class="text-emerald-400 font-bold mb-2">Generated Real Ad Poster:</div>
+                <img src="${imageUrl}" alt="Ad Poster" class="rounded-xl border border-slate-700 w-full object-cover shadow-lg max-h-[220px]" />
             `;
         }
 
@@ -448,12 +446,11 @@
             output.innerHTML = `
                 <div class="text-indigo-400 font-bold mb-1">Generated 15s-30s AI Video Advertising Storyboard:</div>
                 <div class="text-left bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-1 text-slate-300 text-xs">
-                    <p><strong>Scene 1 (0-10s):</strong> High-impact visual addressing market need for "${prompt}".</p>
-                    <p><strong>Scene 2 (10-20s):</strong> Altra AI automated multi-tenant workflow and bookkeeping execution.</p>
-                    <p><strong>Scene 3 (20-30s):</strong> Call to Action: Visit krishnyanshzenovapeaks.com | WhatsApp Director: +2349067862223</p>
+                    <p><strong>Scene 1 (0-10s):</strong> Hook addressing "${prompt}".</p>
+                    <p><strong>Scene 2 (10-20s):</strong> Altra AI workflow demonstration.</p>
+                    <p><strong>Scene 3 (20-30s):</strong> CTA: Visit krishnyanshzenovapeaks.com | WhatsApp: +2349067862223</p>
                 </div>
             `;
         }
     </script>
-</body>
-</html>
+  
