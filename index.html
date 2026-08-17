@@ -11,7 +11,7 @@
         .glass-panel { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.6); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
+<body class="min-h-screen flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black relative">
 
     <!-- TOP HEADER NAVBAR -->
     <header class="glass-panel border-b border-slate-800 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
@@ -95,44 +95,17 @@
             
             <!-- MODULE NAVIGATION TABS -->
             <div class="flex overflow-x-auto space-x-2 pb-2 border-b border-slate-800 no-scrollbar">
-                <button onclick="switchTab('altra')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-emerald-500 text-black whitespace-nowrap transition">Altra AI Brain</button>
-                <button onclick="switchTab('booking')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Real-Time Booking</button>
+                <button onclick="switchTab('booking')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-emerald-500 text-black whitespace-nowrap transition">Real-Time Booking</button>
                 <button onclick="switchTab('bookkeeping')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Bookkeeping & Invoices</button>
                 <button onclick="switchTab('automative')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Business Automative Mode</button>
                 <button onclick="switchTab('learning')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Trainer, Students & E-Books</button>
                 <button onclick="switchTab('media')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Ad & Media Studio</button>
+                <button onclick="switchTab('faq')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">FAQ & Help Center</button>
                 <button onclick="switchTab('founder')" class="tab-btn px-4 py-2 text-xs font-bold rounded-xl bg-slate-900 text-slate-300 hover:text-white whitespace-nowrap transition">Founder & Director</button>
             </div>
 
-            <!-- MODULE 1: ALTRA AI OMNI-BRAIN & HUMAN VOICE RECEPTIONIST -->
-            <div id="tab-altra" class="dashboard-tab space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="glass-panel p-5 rounded-2xl md:col-span-2 flex flex-col h-[440px]">
-                        <h3 class="font-bold text-sm text-emerald-400 mb-3 flex items-center justify-between">
-                            <span class="flex items-center gap-2"><i data-lucide="bot" class="w-4 h-4"></i> AltraAI Universal Intelligence Engine</span>
-                            <button onclick="toggleVoiceAssistant()" id="voice-btn" class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded-lg border border-emerald-500/30">📞 Human Voice Receptionist: OFF</button>
-                        </h3>
-                        <div id="chat-history" class="flex-1 bg-slate-900/60 rounded-xl p-3 overflow-y-auto space-y-3 text-xs border border-slate-800">
-                            <div class="bg-slate-800/80 p-3 rounded-xl max-w-[85%] text-slate-200">Welcome to AltraAI. I am fully synchronized with your business profile, service pricing, and operational assets. Ask me anything for financial and emotional survival!</div>
-                        </div>
-                        <div class="mt-3 flex gap-2">
-                            <input type="text" id="chat-input" placeholder="Ask AltraAI anything across any industry (diet plan, tech, solar, travel)..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500">
-                            <button onclick="sendAIQuery()" class="bg-emerald-500 text-black px-4 py-2.5 rounded-xl font-bold text-xs hover:bg-emerald-400 transition">Ask AI</button>
-                        </div>
-                    </div>
-                    <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="font-bold text-sm text-teal-400 mb-2 flex items-center gap-2"><i data-lucide="building" class="w-4 h-4"></i> Company Information & Instructions</h3>
-                            <p class="text-xs text-slate-400 mb-3">Define exact behavioral parameters so Altra AI knows precisely how to handle your specific firm and clients.</p>
-                            <textarea id="company-instructions" class="w-full h-32 bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white resize-none" placeholder="Enter company guidelines, pricing rules, and services...">Handle inbound customer inquiries professionally, quote exact service fees from our schedule, schedule nearby bookings, and execute automated support across all linked social channels.</textarea>
-                        </div>
-                        <button onclick="saveCompanyContext()" class="w-full py-2.5 bg-teal-500 text-black font-bold rounded-xl text-xs hover:bg-teal-400 transition">Update AI Operating Rules</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MODULE 2: REAL-TIME BOOKING & NEARBY CLIENTS -->
-            <div id="tab-booking" class="dashboard-tab hidden space-y-4">
+            <!-- MODULE 1: REAL-TIME BOOKING & NEARBY CLIENTS -->
+            <div id="tab-booking" class="dashboard-tab space-y-4">
                 <div class="glass-panel p-6 rounded-2xl max-w-2xl mx-auto space-y-4">
                     <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Real-Time Booking & Nearby Inquiries</h3>
                     <p class="text-xs text-slate-400">Manage client appointments, consultations, and localized service requests with live nearby proximity options.</p>
@@ -151,7 +124,7 @@
                 </div>
             </div>
 
-            <!-- MODULE 3: BOOKKEEPING WITH ALTRA LENS & EDITABLE INVOICE -->
+            <!-- MODULE 2: BOOKKEEPING WITH ALTRA LENS & EDITABLE INVOICE -->
             <div id="tab-bookkeeping" class="dashboard-tab hidden space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="glass-panel p-5 rounded-2xl space-y-4">
@@ -175,7 +148,7 @@
                 </div>
             </div>
 
-            <!-- MODULE 4: BUSINESS AUTOMATIVE MODE -->
+            <!-- MODULE 3: BUSINESS AUTOMATIVE MODE -->
             <div id="tab-automative" class="dashboard-tab hidden space-y-4">
                 <div class="glass-panel p-6 rounded-2xl space-y-4">
                     <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> Business Automative Mode (Omnichannel Hub)</h3>
@@ -201,7 +174,7 @@
                 </div>
             </div>
 
-            <!-- MODULE 5: TRAINER, STUDENTS & E-BOOKS -->
+            <!-- MODULE 4: TRAINER, STUDENTS & E-BOOKS -->
             <div id="tab-learning" class="dashboard-tab hidden space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="glass-panel p-5 rounded-2xl space-y-3 text-xs">
@@ -233,7 +206,7 @@
                 </div>
             </div>
 
-            <!-- MODULE 6: AD & MEDIA STUDIO -->
+            <!-- MODULE 5: AD & MEDIA STUDIO -->
             <div id="tab-media" class="dashboard-tab hidden space-y-4">
                 <div class="glass-panel p-6 rounded-2xl space-y-4 text-xs">
                     <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="video" class="w-4 h-4"></i> Ad & Media Studio (Real Visuals & Video Generator)</h3>
@@ -244,6 +217,33 @@
                     </div>
                     <div id="media-output" class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 text-slate-300 min-h-[160px] flex flex-col items-center justify-center text-center">
                         Generated visuals and video advertising storyboards will render here instantly in real time.
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 6: FAQ & HELP CENTER -->
+            <div id="tab-faq" class="dashboard-tab hidden space-y-4">
+                <div class="glass-panel p-6 rounded-2xl max-w-3xl mx-auto space-y-4 text-xs">
+                    <h3 class="font-bold text-sm text-emerald-400 flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4"></i> Frequently Asked Questions (FAQ)</h3>
+                    <p class="text-slate-400 mb-4">Find quick answers about operating your Altra AI suite, booking systems, bookkeeping, and automation modes.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-1">
+                            <h4 class="font-bold text-white text-sm">1. How do I start chatting with Altra AI?</h4>
+                            <p class="text-slate-300">Simply click the floating emerald chat bubble at the bottom right corner of your screen from anywhere in the app to instantly talk with Altra AI!</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-1">
+                            <h4 class="font-bold text-white text-sm">2. How does Altra Lens bookkeeping work?</h4>
+                            <p class="text-slate-300">Open the Bookkeeping tab, click "Open Altra Lens Camera" to scan receipts or invoices, and our intelligence automatically logs and updates your company ledgers.</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-1">
+                            <h4 class="font-bold text-white text-sm">3. How do I link my WhatsApp, Facebook, and Instagram accounts?</h4>
+                            <p class="text-slate-300">Navigate to the "Business Automative Mode" tab and click on any channel card to securely link your webhooks and pages for 24/7 automated replies.</p>
+                        </div>
+                        <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-1">
+                            <h4 class="font-bold text-white text-sm">4. How can I contact the Director / Founder?</h4>
+                            <p class="text-slate-300">Click on the "Founder & Director" tab in the navigation menu to view company details and connect directly with Ruby Garg via WhatsApp (+2349067862223).</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -270,6 +270,31 @@
         </div>
     </main>
 
+    <!-- FLOATING ALTRA AI CHAT BUBBLE -->
+    <div id="altra-bubble-container" class="fixed bottom-6 right-6 z-50 hidden">
+        <!-- Chat Window Box -->
+        <div id="altra-chat-box" class="hidden w-80 md:w-96 glass-panel rounded-2xl shadow-2xl border border-emerald-500/40 flex flex-col h-[450px] mb-3 overflow-hidden">
+            <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span class="font-bold text-xs text-white">Altra AI Universal Assistant</span>
+                </div>
+                <button onclick="toggleAltraChat()" class="text-slate-400 hover:text-white text-xs font-bold px-2 py-1">✕</button>
+            </div>
+            <div id="bubble-chat-history" class="flex-1 p-3 overflow-y-auto space-y-3 text-xs bg-slate-950/70">
+                <div class="bg-slate-800/90 p-3 rounded-xl max-w-[85%] text-slate-200">Hello! I am your personal Altra AI assistant. Ask me anything about your business, diet plans, tech, travel, or bookkeeping!</div>
+            </div>
+            <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
+                <input type="text" id="bubble-chat-input" placeholder="Ask AltraAI anything..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                <button onclick="sendBubbleQuery()" class="bg-emerald-500 text-black px-3 py-2 rounded-xl font-bold text-xs hover:bg-emerald-400 transition">Send</button>
+            </div>
+        </div>
+        <!-- Floating Bubble Button -->
+        <button onclick="toggleAltraChat()" class="w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 text-black shadow-2xl flex items-center justify-center font-bold hover:scale-105 transition shadow-emerald-500/50 border-2 border-slate-900 float-right">
+            <i data-lucide="message-square" class="w-6 h-6 text-black"></i>
+        </button>
+    </div>
+
     <!-- FOOTER -->
     <footer class="glass-panel border-t border-slate-800 py-3 text-center text-xs text-slate-500 mt-auto">
         Krishnyansh Zenova Peak Tech Hub • Altra AI Global Suite OS
@@ -295,11 +320,15 @@
             document.getElementById('display-business-name').innerText = userProfile.name;
             document.getElementById('signup-view').style.display = 'none';
             document.getElementById('main-app').classList.remove('hidden');
+            
+            // Show floating chat bubble once logged in
+            document.getElementById('altra-bubble-container').classList.remove('hidden');
         }
 
         function handleLogout() {
             document.getElementById('main-app').classList.add('hidden');
             document.getElementById('signup-view').style.display = 'block';
+            document.getElementById('altra-bubble-container').classList.add('hidden');
         }
 
         function switchTab(tabId) {
@@ -314,43 +343,34 @@
             lucide.createIcons();
         }
 
-        function toggleVoiceAssistant() {
-            voiceReceptionistActive = !voiceReceptionistActive;
-            const btn = document.getElementById('voice-btn');
-            if(voiceReceptionistActive) {
-                btn.innerText = "📞 Human Voice Receptionist: ACTIVE";
-                btn.classList.remove('bg-emerald-500/20', 'text-emerald-400');
-                btn.classList.add('bg-emerald-500', 'text-black', 'font-bold');
-                alert("Altra AI Human Voice Receptionist is now live to answer inbound client calls and handle inquiries using your exact service pricing.");
-            } else {
-                btn.innerText = "📞 Human Voice Receptionist: OFF";
-                btn.classList.remove('bg-emerald-500', 'text-black', 'font-bold');
-                btn.classList.add('bg-emerald-500/20', 'text-emerald-400');
-            }
+        function toggleAltraChat() {
+            const chatBox = document.getElementById('altra-chat-box');
+            chatBox.classList.toggle('hidden');
+            lucide.createIcons();
         }
 
-        function sendAIQuery() {
-            const input = document.getElementById('chat-input');
-            const history = document.getElementById('chat-history');
+        function sendBubbleQuery() {
+            const input = document.getElementById('bubble-chat-input');
+            const history = document.getElementById('bubble-chat-history');
             const query = input.value.trim();
             if(!query) return;
 
-            history.innerHTML += `<div class="bg-emerald-500/10 border border-emerald-500/30 p-3 rounded-xl ml-auto max-w-[85%] text-white text-right">${query}</div>`;
+            history.innerHTML += `<div class="bg-emerald-500/10 border border-emerald-500/30 p-2.5 rounded-xl ml-auto max-w-[85%] text-white text-right">${query}</div>`;
             input.value = '';
 
             setTimeout(() => {
-                let aiReply = `[Altra AI Engine for ${userProfile.name}]: Synchronized with your ${userProfile.industry} profile. Addressing "${query}" with professional expertise, exact service pricing (${userProfile.currency}), and complete operational intelligence.`;
+                let aiReply = `[Altra AI Universal Engine]: In response to "${query}", our systems for ${userProfile.name} are ready to assist you instantly with professional expertise.`;
                 
                 const qLower = query.toLowerCase();
                 if(qLower.includes('diet') || qLower.includes('weight') || qLower.includes('food')) {
-                    aiReply = `[Altra AI Health & Wellness Expert for ${userProfile.name}]: Here is your customized 1-Week Diet Plan tailored for optimal health, energy, and emotional wellness:\n• Day 1-2: High-protein clean meals, green smoothies, hydration (${userProfile.currency} budget optimized).\n• Day 3-4: Intermittent fasting schedule with balanced complex carbs and organic vegetables.\n• Day 5-7: Nutrient-dense superfoods, lean proteins, and restorative evening herbal teas.`;
+                    aiReply = `[Altra AI Health Expert]: Here is your customized 1-Week Diet Plan:\n• Day 1-2: High-protein clean meals & hydration (${userProfile.currency} optimized).\n• Day 3-4: Intermittent fasting with greens.\n• Day 5-7: Superfoods & herbal teas.`;
                 } else if(qLower.includes('solar') || qLower.includes('energy')) {
-                    aiReply = `[Altra AI Green Energy Module]: Solar and renewable power configuration calculated for your firm. Estimated setup cost: ${userProfile.currency}1,200 with 100% automated efficiency monitoring.`;
-                } else if(qLower.includes('travel') || qLower.includes('tour') || qLower.includes('hospitality')) {
-                    aiReply = `[Altra AI Hospitality & Local Guide]: Proximity tour mapped successfully. Automated booking link generated for local travelers with VIP concierge service.`;
+                    aiReply = `[Altra AI Green Energy]: Solar setup calculated at estimated cost ${userProfile.currency}1,200 with 100% automated smart monitoring.`;
+                } else if(qLower.includes('travel') || qLower.includes('tour')) {
+                    aiReply = `[Altra AI Travel Guide]: Proximity tour mapped successfully. VIP concierge booking link generated.`;
                 }
 
-                history.innerHTML += `<div class="bg-slate-800/80 p-3 rounded-xl max-w-[85%] text-slate-200">${aiReply}</div>`;
+                history.innerHTML += `<div class="bg-slate-800/90 p-2.5 rounded-xl max-w-[85%] text-slate-200">${aiReply}</div>`;
                 history.scrollTop = history.scrollHeight;
             }, 600);
         }
